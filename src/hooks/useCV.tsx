@@ -1,166 +1,117 @@
 import { useState } from 'react';
 import jsPDF from 'jspdf';
-import { useBlogStore } from '../store/blogStore';
 
 export const useCV = () => {
   const [isGenerating, setIsGenerating] = useState(false);
-  const { posts } = useBlogStore();
 
   const generateCV = async () => {
     setIsGenerating(true);
-    
+
     try {
-      // Create a new PDF with UTF-8 support
       const doc = new jsPDF({
         orientation: 'portrait',
         unit: 'mm',
         format: 'a4',
-        putOnlyUsedFonts: true,
-        floatPrecision: 16
       });
 
-      // Add UTF-8 font support
-      doc.addFont('https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Me5Q.ttf', 'Roboto', 'normal');
-      doc.setFont('Roboto');
-      
-      // Set up some variables for positioning
-      let y = 20;
       const pageWidth = doc.internal.pageSize.getWidth();
       const margin = 20;
-      const contentWidth = pageWidth - (margin * 2);
-      
-      // Add header - name and title
-      doc.setFillColor(20, 20, 40); // Dark background
+      const contentWidth = pageWidth - margin * 2;
+      let y = 20;
+
+      // HEADER
+      doc.setFillColor(20, 20, 40);
       doc.rect(0, 0, pageWidth, 40, 'F');
-      
-      doc.setTextColor(147, 51, 234); // Cyber purple
+
+      doc.setTextColor(147, 51, 234);
+      doc.setFont('helvetica', 'bold');
       doc.setFontSize(32);
       doc.text('Станчев', pageWidth / 2, 22, { align: 'center' });
-      
-      doc.setTextColor(255, 255, 255); // White
+
+      doc.setTextColor(255, 255, 255);
+      doc.setFont('helvetica', 'normal');
       doc.setFontSize(20);
       doc.text('SEO Специалист', pageWidth / 2, 32, { align: 'center' });
-      
-      y = 40;
-      
-      // Contact Information
-      doc.setFillColor(200, 200, 200); // Slightly lighter background
-      doc.setLineWidth(0.5);
+
+      // Тънка сива линия
+      y = 42;
+      doc.setDrawColor(180, 180, 180);
+      doc.setLineWidth(0.3);
       doc.line(margin, y, pageWidth - margin, y);
-      y += 10;
-      
-      doc.setTextColor(255, 255, 255);
+      y += 8;
+
+      // Контактна информация
       doc.setFontSize(12);
+      doc.setTextColor(50, 50, 50);
       const contactInfo = 'Имейл: hello@stanchev.bg | Телефон: +359 88 888 8888 | София, България';
-      doc.text(contactInfo, pageWidth / 2, y + 5, { 
-        align: 'center',
-        maxWidth: contentWidth
-      });
-      
+      doc.text(contactInfo, pageWidth / 2, y, { align: 'center' });
+
       y += 15;
-      
-      // Profile Summary
-      doc.setTextColor(147, 51, 234); // Cyber purple
+
+      // Профил
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(147, 51, 234);
       doc.setFontSize(16);
-      doc.setFont('Roboto', 'bold');
       doc.text('Профил', margin, y);
-      
       y += 10;
-      doc.setTextColor(50, 50, 50); // Dark text
+
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(50, 50, 50);
       doc.setFontSize(11);
-      doc.setFont('Roboto', 'normal');
-      
-      const profileText = 'SEO специалист с 1 годинa опит в оптимизацията за търсачки за българския пазар. Експерт в изграждането на стратегии за подобряване на онлайн видимостта и повишаване на органичния трафик. Специализиран в локално SEO, техническа оптимизация и създаване на съдържание.';
-      
-      const splitProfileText = doc.splitTextToSize(profileText, contentWidth);
-      doc.text(splitProfileText, margin, y);
-      
-      y += splitProfileText.length * 7 + 10;
-      
-      // Experience
-      doc.setTextColor(147, 51, 234); // Cyber purple
+      const profileText = 'SEO специалист с 1 година опит в оптимизацията за търсачки за българския пазар. Експерт в изграждането на стратегии за подобряване на онлайн видимостта и повишаване на органичния трафик. Специализиран в локално SEO, техническа оптимизация и създаване на съдържание.';
+      const profileLines = doc.splitTextToSize(profileText, contentWidth);
+      doc.text(profileLines, margin, y);
+      y += profileLines.length * 6 + 10;
+
+      // Опит
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(147, 51, 234);
       doc.setFontSize(16);
-      doc.setFont('Roboto', 'bold');
       doc.text('Опит', margin, y);
-      
       y += 10;
-      
-      // Add experience entries
-      const experiences = [
-        {
-          title: 'Стажант | WebStation',
-          period: '2025 - до момента',
-          description: 'Консултиране на над 50 бизнеса за подобряване на тяхното SEO присъствие в българския пазар. Разработване на персонализирани стратегии за повишаване на органичния трафик.'
-        },
-      ];
 
-      experiences.forEach(exp => {
-        doc.setTextColor(6, 182, 212); // Cyber blue
-        doc.setFontSize(14);
-        doc.setFont('Roboto', 'bold');
-        doc.text(exp.title, margin, y);
-        
-        y += 7;
-        doc.setTextColor(100, 100, 100);
-        doc.setFontSize(11);
-        doc.setFont('Roboto', 'italic');
-        doc.text(exp.period, margin, y);
-        
-        y += 7;
-        doc.setTextColor(50, 50, 50);
-        doc.setFont('Roboto', 'normal');
-        const descLines = doc.splitTextToSize(exp.description, contentWidth);
-        doc.text(descLines, margin, y);
-        
-        y += descLines.length * 7 + 10;
-      });
+      doc.setTextColor(6, 182, 212);
+      doc.setFontSize(14);
+      doc.setFont('helvetica', 'bold');
+      doc.text('Стажант | WebStation', margin, y);
+      y += 7;
 
-      // Add blog posts as publications
-      if (posts.length > 0) {
-        doc.setTextColor(147, 51, 234); // Cyber purple
-        doc.setFontSize(16);
-        doc.setFont('Roboto', 'bold');
-        doc.text('Публикации', margin, y);
-        
-        y += 10;
-        
-        // List top 3 blog posts
-        const recentPosts = posts
-          .filter(post => post.status === 'published')
-          .slice(0, 3);
+      doc.setFont('helvetica', 'italic');
+      doc.setTextColor(100, 100, 100);
+      doc.setFontSize(11);
+      doc.text('2025 - до момента', margin, y);
+      y += 7;
 
-        recentPosts.forEach(post => {
-          if (y > doc.internal.pageSize.getHeight() - 40) {
-            doc.addPage();
-            y = 20;
-          }
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(50, 50, 50);
+      const expDesc = 'Консултиране на над 50 бизнеса за подобряване на тяхното SEO присъствие в българския пазар. Разработване на персонализирани стратегии за повишаване на органичния трафик.';
+      const expLines = doc.splitTextToSize(expDesc, contentWidth);
+      doc.text(expLines, margin, y);
+      y += expLines.length * 6 + 10;
 
-          doc.setTextColor(6, 182, 212); // Cyber blue
-          doc.setFontSize(12);
-          doc.setFont('Roboto', 'bold');
-          const titleLines = doc.splitTextToSize(post.title, contentWidth);
-          doc.text(titleLines, margin, y);
-          
-          y += titleLines.length * 7;
-          doc.setTextColor(100, 100, 100);
-          doc.setFontSize(10);
-          doc.setFont('Roboto', 'italic');
-          doc.text(new Date(post.publishedAt).toLocaleDateString('bg-BG'), margin, y);
-          
-          y += 7;
-          doc.setTextColor(50, 50, 50);
-          doc.setFont('Roboto', 'normal');
-          const excerptLines = doc.splitTextToSize(post.excerpt, contentWidth);
-          doc.text(excerptLines, margin, y);
-          
-          y += excerptLines.length * 5 + 7;
-        });
-      }
-      
-      // Save the PDF
+      // Образование
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(147, 51, 234);
+      doc.setFontSize(16);
+      doc.text('Образование', margin, y);
+      y += 10;
+
+      doc.setTextColor(6, 182, 212);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(14);
+      doc.text('Софийски университет "Св. Климент Охридски"', margin, y);
+      y += 7;
+
+      doc.setFont('helvetica', 'italic');
+      doc.setTextColor(100, 100, 100);
+      doc.setFontSize(11);
+      doc.text('Бакалавър по маркетинг – 2021–2025', margin, y);
+
+      // Финал
       doc.save('stanchev-seo-cv.pdf');
+
     } catch (error) {
-      console.error('Error generating CV:', error);
+      console.error('Грешка при генериране на CV:', error);
     } finally {
       setIsGenerating(false);
     }
