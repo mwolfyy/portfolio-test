@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import jsPDF from 'jspdf';
+import '../fonts/notoserif-normal';
 
 export const useCV = () => {
   const [isGenerating, setIsGenerating] = useState(false);
@@ -24,12 +24,12 @@ export const useCV = () => {
       doc.rect(0, 0, pageWidth, 40, 'F');
 
       doc.setTextColor(147, 51, 234);
-      doc.setFont('helvetica', 'bold');
+      doc.setFont('notoserif', 'normal');
       doc.setFontSize(32);
       doc.text('Станчев', pageWidth / 2, 22, { align: 'center' });
 
       doc.setTextColor(255, 255, 255);
-      doc.setFont('helvetica', 'normal');
+      doc.setFont('notoserif', 'normal');
       doc.setFontSize(20);
       doc.text('SEO Специалист', pageWidth / 2, 32, { align: 'center' });
 
@@ -49,13 +49,13 @@ export const useCV = () => {
       y += 15;
 
       // Профил
-      doc.setFont('helvetica', 'bold');
+      doc.setFont('notoserif', 'normal');
       doc.setTextColor(147, 51, 234);
       doc.setFontSize(16);
       doc.text('Профил', margin, y);
       y += 10;
 
-      doc.setFont('helvetica', 'normal');
+      doc.setFont('notoserif', 'normal');
       doc.setTextColor(50, 50, 50);
       doc.setFontSize(11);
       const profileText = 'SEO специалист с 1 година опит в оптимизацията за търсачки за българския пазар. Експерт в изграждането на стратегии за подобряване на онлайн видимостта и повишаване на органичния трафик. Специализиран в локално SEO, техническа оптимизация и създаване на съдържание.';
@@ -64,7 +64,7 @@ export const useCV = () => {
       y += profileLines.length * 6 + 10;
 
       // Опит
-      doc.setFont('helvetica', 'bold');
+      doc.setFont('notoserif', 'normal');
       doc.setTextColor(147, 51, 234);
       doc.setFontSize(16);
       doc.text('Опит', margin, y);
@@ -72,17 +72,17 @@ export const useCV = () => {
 
       doc.setTextColor(6, 182, 212);
       doc.setFontSize(14);
-      doc.setFont('helvetica', 'bold');
+      doc.setFont('notoserif', 'normal');
       doc.text('Стажант | WebStation', margin, y);
       y += 7;
 
-      doc.setFont('helvetica', 'italic');
+      doc.setFont('notoserif', 'normal');
       doc.setTextColor(100, 100, 100);
       doc.setFontSize(11);
       doc.text('2025 - до момента', margin, y);
       y += 7;
 
-      doc.setFont('helvetica', 'normal');
+      doc.setFont('notoserif', 'normal');
       doc.setTextColor(50, 50, 50);
       const expDesc = 'Консултиране на над 50 бизнеса за подобряване на тяхното SEO присъствие в българския пазар. Разработване на персонализирани стратегии за повишаване на органичния трафик.';
       const expLines = doc.splitTextToSize(expDesc, contentWidth);
@@ -90,22 +90,22 @@ export const useCV = () => {
       y += expLines.length * 6 + 10;
 
       // Образование
-      doc.setFont('helvetica', 'bold');
+      doc.setFont('notoserif', 'normal');
       doc.setTextColor(147, 51, 234);
       doc.setFontSize(16);
       doc.text('Образование', margin, y);
       y += 10;
 
       doc.setTextColor(6, 182, 212);
-      doc.setFont('helvetica', 'bold');
+      doc.setFont('notoserif', 'normal');
       doc.setFontSize(14);
-      doc.text('Софийски университет "Св. Климент Охридски"', margin, y);
+      doc.text('Военна Академия "Г. С. Раковски"', margin, y);
       y += 7;
 
-      doc.setFont('helvetica', 'italic');
+      doc.setFont('notoserif', 'normal');
       doc.setTextColor(100, 100, 100);
       doc.setFontSize(11);
-      doc.text('Бакалавър по маркетинг – 2021–2025', margin, y);
+      doc.text('Бакалавър по Сигурност и Отбрана – 2020–2024', margin, y);
 
       // Финал
       doc.save('stanchev-seo-cv.pdf');
