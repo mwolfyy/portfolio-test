@@ -107,8 +107,12 @@ export const useCV = () => {
 
       doc.setTextColor(50, 50, 50);
       doc.setFontSize(11);
-      doc.text('• Оценявах различни заплахи и рискове, свързани със сигурността, формулирайки противодействия.', margin, y);
-      y += 5;
+
+      const bulletText = '• Оценявах различни заплахи и рискове, свързани със сигурността, формулирайки противодействия.';
+      const bulletLines = doc.splitTextToSize(bulletText, contentWidth);
+
+      doc.text(bulletLines, margin, y);
+      y += bulletLines.length * 6 + 4;
 
       // Финал
       doc.save('stanchev-seo-cv.pdf');
