@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import '../fonts/notoserif-normal';
+import { jsPDF } from 'jspdf';
+import notoSerifFont from '../fonts/notoserif-normal-esm.js';
 
 export const useCV = () => {
   const [isGenerating, setIsGenerating] = useState(false);
@@ -14,6 +15,11 @@ export const useCV = () => {
         format: 'a4',
       });
 
+      // Регистрирaне на шрифта
+      doc.addFileToVFS('notoserif.ttf', notoSerifFont);
+      doc.addFont('notoserif.ttf', 'notoserif', 'normal');
+      doc.setFont('notoserif', 'normal');
+
       const pageWidth = doc.internal.pageSize.getWidth();
       const margin = 20;
       const contentWidth = pageWidth - margin * 2;
@@ -24,12 +30,10 @@ export const useCV = () => {
       doc.rect(0, 0, pageWidth, 40, 'F');
 
       doc.setTextColor(147, 51, 234);
-      doc.setFont('notoserif', 'normal');
       doc.setFontSize(32);
       doc.text('Станчев', pageWidth / 2, 22, { align: 'center' });
 
       doc.setTextColor(255, 255, 255);
-      doc.setFont('notoserif', 'normal');
       doc.setFontSize(20);
       doc.text('SEO Специалист', pageWidth / 2, 32, { align: 'center' });
 
@@ -49,22 +53,20 @@ export const useCV = () => {
       y += 15;
 
       // Профил
-      doc.setFont('notoserif', 'normal');
       doc.setTextColor(147, 51, 234);
       doc.setFontSize(16);
       doc.text('Профил', margin, y);
       y += 10;
 
-      doc.setFont('notoserif', 'normal');
       doc.setTextColor(50, 50, 50);
       doc.setFontSize(11);
-      const profileText = 'SEO специалист с 1 година опит в оптимизацията за търсачки за българския пазар. Експерт в изграждането на стратегии за подобряване на онлайн видимостта и повишаване на органичния трафик. Специализиран в локално SEO, техническа оптимизация и създаване на съдържание.';
+      const profileText =
+        'SEO специалист с 1 година опит в оптимизацията за търсачки за българския пазар. Експерт в изграждането на стратегии за подобряване на онлайн видимостта и повишаване на органичния трафик. Специализиран в локално SEO, техническа оптимизация и създаване на съдържание.';
       const profileLines = doc.splitTextToSize(profileText, contentWidth);
       doc.text(profileLines, margin, y);
       y += profileLines.length * 6 + 10;
 
       // Опит
-      doc.setFont('notoserif', 'normal');
       doc.setTextColor(147, 51, 234);
       doc.setFontSize(16);
       doc.text('Опит', margin, y);
@@ -72,44 +74,38 @@ export const useCV = () => {
 
       doc.setTextColor(6, 182, 212);
       doc.setFontSize(14);
-      doc.setFont('notoserif', 'normal');
       doc.text('Стажант | WebStation', margin, y);
       y += 7;
 
-      doc.setFont('notoserif', 'normal');
       doc.setTextColor(100, 100, 100);
       doc.setFontSize(11);
       doc.text('2025 - до момента', margin, y);
       y += 7;
 
-      doc.setFont('notoserif', 'normal');
       doc.setTextColor(50, 50, 50);
-      const expDesc = 'Консултиране на над 50 бизнеса за подобряване на тяхното SEO присъствие в българския пазар. Разработване на персонализирани стратегии за повишаване на органичния трафик.';
+      const expDesc =
+        'Консултиране на над 50 бизнеса за подобряване на тяхното SEO присъствие в българския пазар. Разработване на персонализирани стратегии за повишаване на органичния трафик.';
       const expLines = doc.splitTextToSize(expDesc, contentWidth);
       doc.text(expLines, margin, y);
       y += expLines.length * 6 + 10;
 
       // Образование
-      doc.setFont('notoserif', 'normal');
       doc.setTextColor(147, 51, 234);
       doc.setFontSize(16);
       doc.text('Образование', margin, y);
       y += 10;
 
       doc.setTextColor(6, 182, 212);
-      doc.setFont('notoserif', 'normal');
       doc.setFontSize(14);
       doc.text('Военна Академия "Г. С. Раковски"', margin, y);
       y += 7;
 
-      doc.setFont('notoserif', 'normal');
       doc.setTextColor(100, 100, 100);
       doc.setFontSize(11);
       doc.text('Бакалавър по Сигурност и Отбрана – 2020–2024', margin, y);
 
       // Финал
       doc.save('stanchev-seo-cv.pdf');
-
     } catch (error) {
       console.error('Грешка при генериране на CV:', error);
     } finally {
