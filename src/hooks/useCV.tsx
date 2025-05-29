@@ -103,6 +103,9 @@ export const useCV = () => {
       doc.setTextColor(50, 50, 50);
       doc.setFontSize(11);
       doc.text('Бакалавър по Сигурност и Отбрана | 2020–2024', margin, y);
+
+      doc.setTextColor(50, 50, 50);
+      doc.setFontSize(11);
       doc.text('• Оценявах различни заплахи и рискове, свързани със сигурността, формулирайки противодействия.', margin, y);
 
       // Финал
