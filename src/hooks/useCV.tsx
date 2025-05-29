@@ -103,6 +103,7 @@ export const useCV = () => {
       doc.setTextColor(50, 50, 50);
       doc.setFontSize(11);
       doc.text('Бакалавър по Сигурност и Отбрана | 2020–2024', margin, y);
+      y += 6;
 
       doc.setTextColor(50, 50, 50);
       doc.setFontSize(11);
