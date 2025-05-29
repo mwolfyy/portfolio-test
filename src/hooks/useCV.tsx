@@ -34,28 +34,30 @@ export const useCV = () => {
       doc.rect(0, 0, pageWidth, 40, 'F');
       
       doc.setTextColor(147, 51, 234); // Cyber purple
-      doc.setFontSize(24);
-      doc.text('Станчев', pageWidth / 2, 20, { align: 'center' });
+      doc.setFontSize(32);
+      doc.text('Станчев', pageWidth / 2, 22, { align: 'center' });
       
       doc.setTextColor(255, 255, 255); // White
-      doc.setFontSize(16);
-      doc.text('SEO Специалист', pageWidth / 2, 30, { align: 'center' });
+      doc.setFontSize(20);
+      doc.text('SEO Специалист', pageWidth / 2, 32, { align: 'center' });
       
-      y = 50;
+      y = 40;
       
       // Contact Information
-      doc.setFillColor(30, 30, 50); // Slightly lighter background
-      doc.rect(0, y, pageWidth, 25, 'F');
+      doc.setFillColor(200, 200, 200); // Slightly lighter background
+      doc.setLineWidth(0.5);
+      doc.line(margin, y, pageWidth - margin, y);
+      y += 10;
       
       doc.setTextColor(255, 255, 255);
-      doc.setFontSize(10);
+      doc.setFontSize(12);
       const contactInfo = 'Имейл: hello@stanchev.bg | Телефон: +359 88 888 8888 | София, България';
-      doc.text(contactInfo, pageWidth / 2, y + 10, { 
+      doc.text(contactInfo, pageWidth / 2, y + 5, { 
         align: 'center',
         maxWidth: contentWidth
       });
       
-      y += 35;
+      y += 15;
       
       // Profile Summary
       doc.setTextColor(147, 51, 234); // Cyber purple
@@ -68,7 +70,7 @@ export const useCV = () => {
       doc.setFontSize(11);
       doc.setFont('Roboto', 'normal');
       
-      const profileText = 'SEO специалист с над 5 години опит в оптимизацията за търсачки за българския пазар. Експерт в изграждането на стратегии за подобряване на онлайн видимостта и повишаване на органичния трафик. Специализиран в локално SEO, техническа оптимизация и създаване на съдържание.';
+      const profileText = 'SEO специалист с 1 годинa опит в оптимизацията за търсачки за българския пазар. Експерт в изграждането на стратегии за подобряване на онлайн видимостта и повишаване на органичния трафик. Специализиран в локално SEO, техническа оптимизация и създаване на съдържание.';
       
       const splitProfileText = doc.splitTextToSize(profileText, contentWidth);
       doc.text(splitProfileText, margin, y);
@@ -86,15 +88,10 @@ export const useCV = () => {
       // Add experience entries
       const experiences = [
         {
-          title: 'SEO Консултант | Freelance',
-          period: '2020 - до момента',
+          title: 'Стажант | WebStation',
+          period: '2025 - до момента',
           description: 'Консултиране на над 50 бизнеса за подобряване на тяхното SEO присъствие в българския пазар. Разработване на персонализирани стратегии за повишаване на органичния трафик.'
         },
-        {
-          title: 'SEO Специалист | Дигитална Агенция',
-          period: '2018 - 2020',
-          description: 'Управление на SEO стратегии за различни клиенти, фокусирани върху българския пазар. Постигнати резултати: средно 200% увеличение на органичния трафик.'
-        }
       ];
 
       experiences.forEach(exp => {
