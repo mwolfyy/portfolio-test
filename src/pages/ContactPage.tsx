@@ -56,17 +56,13 @@ const ContactPage: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     if (!validateForm()) return;
-
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('/.netlify/functions/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
@@ -117,7 +113,6 @@ const ContactPage: React.FC = () => {
 
       <div className="pt-24 pb-20">
         <div className="container mx-auto px-4">
-          {/* Header */}
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               <span className="neon-text">Свържете се</span> с мен
@@ -128,7 +123,6 @@ const ContactPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Contact Info */}
             <div className="lg:col-span-1 space-y-6">
               <CyberCard glowColor="purple">
                 <div className="flex items-start">
@@ -185,7 +179,6 @@ const ContactPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Contact Form */}
             <div className="lg:col-span-2">
               <CyberCard glowColor="pink" className="h-full">
                 {isSubmitted ? (
