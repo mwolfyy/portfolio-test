@@ -20,7 +20,7 @@
     "@tsparticles/basic": "^3.8.1",
     "@tsparticles/engine": "^3.8.1",
     "date-fns": "^3.3.1",
-    "google-spreadsheet": "^4.1.4",
+    "google-spreadsheet": "^3.3.0",
     "googleapis": "^149.0.0",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
