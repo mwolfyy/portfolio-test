@@ -94,8 +94,7 @@ const ContactPage: React.FC = () => {
         setTimeout(() => {
           setIsSubmitted(false);
         }, 5000);
-    }
-  };
+    };
 
   return (
     <>
