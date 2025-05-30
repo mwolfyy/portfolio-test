@@ -42,7 +42,6 @@ const AdminDashboard: React.FC = () => {
           🔔
           <span className="ml-1">Заявки</span>
           <span className="absolute -top-2 -right-3 bg-red-600 text-white text-xs rounded-full px-1">
-          {новиЗаявкиБрой} {/* <- направи логика да показва непрочетени */}
           </span>
         </Link>
       </div>
