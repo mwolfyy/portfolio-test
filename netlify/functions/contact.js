@@ -6,13 +6,14 @@ exports.handler = async function (event) {
 
     const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID);
 
-    await doc.auth.useServiceAccountAuth({
+    // 🔄 CORRECT way to authenticate with the latest version
+    await doc.useServiceAccountAuth({
       client_email: process.env.GOOGLE_CLIENT_EMAIL,
       private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
     });
 
     await doc.loadInfo();
-    const sheet = doc.sheetsByIndex[0];
+    const sheet = doc.sheetsByIndex[0]; // first sheet in the doc
 
     await sheet.addRow({
       Name: body.name,
@@ -31,7 +32,10 @@ exports.handler = async function (event) {
     console.error('Error submitting to Google Sheet:', error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Грешка при запис', details: error.message }),
+      body: JSON.stringify({
+        error: 'Грешка при запис',
+        details: error.message,
+      }),
     };
   }
 };
