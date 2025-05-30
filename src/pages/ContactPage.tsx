@@ -24,8 +24,7 @@ const ContactPage: React.FC = () => {
       ...prev,
       [name]: value,
     }));
-    
-    // Clear error when user types
+
     if (errors[name]) {
       setErrors((prev) => ({
         ...prev,
@@ -36,65 +35,62 @@ const ContactPage: React.FC = () => {
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
-    
+
     if (!formData.name.trim()) {
       newErrors.name = 'Моля, въведете вашето име';
     }
-    
+
     if (!formData.email.trim()) {
       newErrors.email = 'Моля, въведете вашия имейл';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'Моля, въведете валиден имейл адрес';
     }
-    
+
     if (!formData.message.trim()) {
       newErrors.message = 'Моля, въведете вашето съобщение';
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
- const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-  if (!validateForm()) return;
+    if (!validateForm()) return;
 
-  setIsSubmitting(true);
+    setIsSubmitting(true);
 
-  try {
-    const response = await fetch('/api/contact', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    if (!response.ok) throw new Error('Грешка при изпращане');
+      if (!response.ok) throw new Error('Грешка при изпращане');
 
-    setIsSubmitted(true);
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: '',
-    });
+      setIsSubmitted(true);
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: '',
+      });
 
-    setTimeout(() => setIsSubmitted(false), 5000);
-  } catch (error) {
-    console.error('Form error:', error);
-    alert('Възникна грешка при изпращане. Моля, опитайте отново.');
-  } finally {
-    setIsSubmitting(false);
-  }
-};
-        // Reset submission status after 5 seconds
-        setTimeout(() => {
-          setIsSubmitted(false);
-        }, 5000);
-    };
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 5000);
+    } catch (error) {
+      console.error('Form error:', error);
+      alert('Възникна грешка при изпращане. Моля, опитайте отново.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <>
@@ -145,7 +141,7 @@ const ContactPage: React.FC = () => {
                   </div>
                 </div>
               </CyberCard>
-              
+
               <CyberCard glowColor="blue">
                 <div className="flex items-start">
                   <div className="mr-4">
@@ -157,7 +153,7 @@ const ContactPage: React.FC = () => {
                   </div>
                 </div>
               </CyberCard>
-              
+
               <CyberCard glowColor="teal">
                 <div className="flex items-start">
                   <div className="mr-4">
@@ -169,7 +165,7 @@ const ContactPage: React.FC = () => {
                   </div>
                 </div>
               </CyberCard>
-              
+
               <div className="mt-8">
                 <h3 className="text-xl font-bold mb-4">Работно време</h3>
                 <div className="space-y-2 text-gray-300">
@@ -188,7 +184,7 @@ const ContactPage: React.FC = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Contact Form */}
             <div className="lg:col-span-2">
               <CyberCard glowColor="pink" className="h-full">
@@ -221,7 +217,7 @@ const ContactPage: React.FC = () => {
                         error={errors.email}
                       />
                     </div>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <Input
                         label="Телефон (незадължително)"
@@ -238,7 +234,7 @@ const ContactPage: React.FC = () => {
                         onChange={handleChange}
                       />
                     </div>
-                    
+
                     <TextArea
                       label="Съобщение"
                       name="message"
@@ -248,10 +244,10 @@ const ContactPage: React.FC = () => {
                       onChange={handleChange}
                       error={errors.message}
                     />
-                    
+
                     <div className="text-right">
-                      <Button 
-                        type="submit" 
+                      <Button
+                        type="submit"
                         variant="primary"
                         icon={<Send size={20} />}
                         isLoading={isSubmitting}
@@ -268,5 +264,6 @@ const ContactPage: React.FC = () => {
       </div>
     </>
   );
+};
 
 export default ContactPage;
