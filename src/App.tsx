@@ -17,6 +17,7 @@ import PrivacyPage from './pages/PrivacyPage';
 import TermsPage from './pages/TermsPage';
 import CookiesPage from './pages/CookiesPage';
 import { ScrollToTop } from './components/Layout/ScrollToTop';
+import RequestsPage from './pages/admin/RequestsPage';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path="admin/blog" element={<PrivateRoute><AdminBlogPosts /></PrivateRoute>} />
           <Route path="admin/blog/нов" element={<PrivateRoute><AdminEditPost /></PrivateRoute>} />
           <Route path="admin/blog/:id" element={<PrivateRoute><AdminEditPost /></PrivateRoute>} />
+          <Route path="заявки" element={<PrivateRoute><RequestsPage /></PrivateRoute>} />
         </Route>
       </Routes>
     </>
