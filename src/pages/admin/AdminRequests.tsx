@@ -23,7 +23,8 @@ const AdminRequestsPage: React.FC = () => {
     try {
       const res = await fetch('/.netlify/functions/get-requests');
       const data = await res.json();
-      setRequests(data.requests || []);
+      console.log('Получени заявки:', data);
+      setRequests(data || []);
     } catch (error) {
       console.error('Грешка при заявките:', error);
     }
