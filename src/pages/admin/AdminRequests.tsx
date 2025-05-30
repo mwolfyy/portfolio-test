@@ -2,66 +2,58 @@ import React, { useEffect, useState } from 'react';
 import CyberCard from '../../components/UI/CyberCard';
 import SEOHead from '../../components/Layout/SEOHead';
 
-const AdminRequests: React.FC = () => {
+const AdminRequestsPage = () => {
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/.netlify/functions/get-requests')
-      .then(res => res.json())
-      .then(data => {
+    const fetchRequests = async () => {
+      try {
+        const res = await fetch('/.netlify/functions/get-requests');
+        const data = await res.json();
         setRequests(data.requests || []);
+      } catch (err) {
+        console.error('Error loading requests:', err);
+      } finally {
         setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, []);
+      }
+    };
 
-  const handleAction = (id: string, action: 'done' | 'delete' | 'pin') => {
-    alert(`Действие "${action}" върху заявка с ID: ${id}`);
-    // Можеш тук да добавиш реална логика за обновяване
-  };
+    fetchRequests();
+  }, []);
 
   return (
     <>
-      <SEOHead title="Заявки | Админ панел" description="Всички заявки от формата за контакт" />
+      <SEOHead title="Заявки | Админ" description="Всички заявки от формата за контакт" />
       <div className="pt-24 pb-20 container mx-auto px-4">
-        <h1 className="text-3xl font-bold mb-8">Заявки от формата</h1>
+        <h1 className="text-3xl font-bold mb-8">Всички Заявки</h1>
 
         {loading ? (
-          <p className="text-gray-300">Зареждане...</p>
+          <p>Зареждане...</p>
+        ) : requests.length === 0 ? (
+          <p>Няма получени заявки.</p>
         ) : (
-          requests.map((req: any, index: number) => (
-            <CyberCard key={index} glowColor="teal" className="mb-6">
-              <div className="mb-2">
-                <strong>Име:</strong> {req.Name}
-              </div>
-              <div className="mb-2">
-                <strong>Имейл:</strong> {req.Email}
-              </div>
-              <div className="mb-2">
-                <strong>Телефон:</strong> {req.Phone}
-              </div>
-              <div className="mb-2">
-                <strong>Тема:</strong> {req.Subject}
-              </div>
-              <div className="mb-2">
-                <strong>Съобщение:</strong> {req.Message}
-              </div>
-              <div className="mb-2 text-sm text-gray-400">
-                <strong>Дата:</strong> {req.Date}
-              </div>
-
-              <div className="flex space-x-4 mt-4">
-                <button onClick={() => handleAction(req._rowNumber, 'done')} className="px-4 py-1 bg-cyber-green/20 text-cyber-green rounded">Готово</button>
-                <button onClick={() => handleAction(req._rowNumber, 'delete')} className="px-4 py-1 bg-cyber-red/20 text-cyber-red rounded">Изтрий</button>
-                <button onClick={() => handleAction(req._rowNumber, 'pin')} className="px-4 py-1 bg-cyber-yellow/20 text-cyber-yellow rounded">Закачи</button>
-              </div>
-            </CyberCard>
-          ))
+          <div className="space-y-6">
+            {requests.map((req, index) => (
+              <CyberCard key={index} glowColor="blue">
+                <p><strong>Име:</strong> {req.name}</p>
+                <p><strong>Имейл:</strong> {req.email}</p>
+                <p><strong>Телефон:</strong> {req.phone}</p>
+                <p><strong>Тема:</strong> {req.subject}</p>
+                <p><strong>Съобщение:</strong> {req.message}</p>
+                <p className="text-sm text-gray-400"><strong>Дата:</strong> {req.date}</p>
+                <div className="mt-4 flex gap-3">
+                  <button className="px-3 py-1 bg-green-600 rounded text-white">Готово</button>
+                  <button className="px-3 py-1 bg-red-600 rounded text-white">Изтрий</button>
+                  <button className="px-3 py-1 bg-yellow-500 rounded text-white">Закачи</button>
+                </div>
+              </CyberCard>
+            ))}
+          </div>
         )}
       </div>
     </>
   );
 };
 
-export default AdminRequests;
+export default AdminRequestsPage;
