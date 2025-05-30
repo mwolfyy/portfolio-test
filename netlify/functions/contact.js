@@ -21,6 +21,9 @@ exports.handler = async function (event) {
       Phone: body.phone || '',
       Subject: body.subject || '',
       Message: body.message,
+      Status: 'ново',
+      Pinned: 'false',
+      DeletedAt: '',
       Date: new Date().toLocaleString(),
     });
 
