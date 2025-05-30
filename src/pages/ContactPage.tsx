@@ -13,6 +13,10 @@ const ContactPage: React.FC = () => {
     phone: '',
     subject: '',
     message: '',
+    Status: 'ново',
+    Pinned: 'false',
+    DeletedAt: '',
+    Date: new Date().toISOString(),
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
