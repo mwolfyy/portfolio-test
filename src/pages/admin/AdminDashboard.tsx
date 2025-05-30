@@ -24,7 +24,7 @@ const AdminDashboard: React.FC = () => {
       <SEOHead
         title="Админ панел | SEO Специалист Станчев"
         description="Административен панел"
-        canonicalUrl="https://stanchev-seo.bg/admin"
+        canonicalUrl="https://stanchev.bg/admin"
       />
 
       <div className="pt-24 pb-20">
@@ -37,8 +37,16 @@ const AdminDashboard: React.FC = () => {
               <ExternalLink size={18} className="mr-2" />
               Към сайта
             </Link>
-          </div>
 
+            <Link to="/admin/заявки" className="relative text-cyber-purple hover:text-cyber-pink transition-colors flex items-center font-bold">
+          🔔
+          <span className="ml-1">Заявки</span>
+          <span className="absolute -top-2 -right-3 bg-red-600 text-white text-xs rounded-full px-1">
+          {новиЗаявкиБрой} {/* <- направи логика да показва непрочетени */}
+          </span>
+        </Link>
+      </div>
+          
           {/* Quick Stats */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             <CyberCard glowColor="purple">
