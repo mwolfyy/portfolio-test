@@ -7,30 +7,32 @@ exports.handler = async function () {
       client_email: process.env.GOOGLE_CLIENT_EMAIL,
       private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
     });
-    await doc.loadInfo();
 
+    await doc.loadInfo();
     const sheet = doc.sheetsByIndex[0];
     const rows = await sheet.getRows();
 
-    const requests = rows.map((row) => ({
-      name: row.Name || '',
-      email: row.Email || '',
-      phone: row.Phone || '',
-      subject: row.Subject || '',
-      message: row.Message || '',
-      date: row.Date || '',
-      rowNumber: row.rowNumber,
+    const filtered = rows.map((row) => ({
+      id: row.rowIndex,
+      name: row.Name,
+      email: row.Email,
+      phone: row.Phone,
+      subject: row.Subject,
+      message: row.Message,
+      status: row.Status || 'ново',
+      pinned: row.Pinned === 'true',
+      deletedAt: row.DeletedAt || '',
+      date: row.Date,
     }));
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ requests }),
+      body: JSON.stringify(filtered),
     };
-  } catch (error) {
-    console.error('Error fetching requests:', error);
+  } catch (e) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Error fetching data', details: error.message }),
+      body: JSON.stringify({ error: e.message }),
     };
   }
 };
