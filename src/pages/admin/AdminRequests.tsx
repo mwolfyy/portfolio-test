@@ -109,4 +109,4 @@ const AdminRequestsPage: React.FC = () => {
   );
 };
 
-export default AdminRequests;
+export default AdminRequestsPage;
