@@ -159,7 +159,7 @@ const ContactPage: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold mb-2">Имейл</h3>
-                    <p className="text-gray-300">hello@stanchev.bg</p>
+                    <p className="text-gray-300">seo@stanchev.bg</p>
                   </div>
                 </div>
               </CyberCard>
