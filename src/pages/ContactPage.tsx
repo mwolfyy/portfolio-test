@@ -169,11 +169,11 @@ const ContactPage: React.FC = () => {
                 <div className="space-y-2 text-gray-300">
                   <div className="flex justify-between">
                     <span>Понеделник - Петък:</span>
-                    <span>9:00 - 18:00</span>
+                    <span>09:00 - 17:00</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Събота:</span>
-                    <span>10:00 - 15:00</span>
+                    <span>Затворено</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Неделя:</span>
