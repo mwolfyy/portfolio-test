@@ -69,23 +69,6 @@ const Navbar: React.FC = () => {
             <NavLink to="/контакти" className="nav-link">
               Контакти
             </NavLink>
-            {isAuthenticated ? (
-              <>
-                <NavLink to="/admin" className="btn-primary py-2 px-4 rounded-md">
-                  Админ
-                </NavLink>
-                <button
-                  onClick={logout}
-                  className="btn-outline py-2 px-4 rounded-md"
-                >
-                  Изход
-                </button>
-              </>
-            ) : (
-              <NavLink to="/вход" className="btn-primary py-2 px-4 rounded-md">
-                Вход
-              </NavLink>
-            )}
           </nav>
 
           {/* Mobile Menu Button */}
