@@ -49,7 +49,7 @@ const services = [
   },
   {
     icon: <Megaphone className="text-cyber-pink\" size={36} />,
-    title: 'Изграждане на Връзки',
+    title: 'Линк Билдинг',
     description: 'Стратегии за изграждане на висококачествени обратни връзки от авторитетни български сайтове с фокус върху релевантност и трайност. Линковете носят доверие.',
     color: 'pink',
   },
@@ -83,7 +83,7 @@ const Services: React.FC = () => {
                 <h3 className="text-xl font-bold mb-3">{service.title}</h3>
                 <p className="text-gray-400 flex-grow mb-4">{service.description}</p>
                 <Link 
-                  to={`/услуги#${service.title.toLowerCase().replace(/\s+/g, '-')}`}
+                  to={`/услуги/${service.title.toLowerCase().replace(/\s+/g, '-')}`}
                   className="text-cyber-blue hover:text-cyber-purple transition-colors inline-flex items-center mt-auto"
                 >
                   Научи повече
