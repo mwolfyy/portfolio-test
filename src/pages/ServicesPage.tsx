@@ -7,6 +7,7 @@ import CyberCard from '../components/UI/CyberCard';
 const services = [
   {
     id: 'seo-odit',
+	slug: 'seo-одит',
     icon: <Search className="text-cyber-purple" size={48} />,
     title: 'SEO Одит',
     description: 'Задълбочен анализ на вашия уебсайт и конкурентите ви за откриване на възможности за подобрение.',
@@ -22,6 +23,7 @@ const services = [
   },
   {
     id: 'klyuchovi-dumi',
+	slug: 'ключови-думи',
     icon: <BarChart3 className="text-cyber-blue\" size={48} />,
     title: 'Проучване на Ключови Думи',
     description: 'Проучване и анализ на ключови думи за вашата индустрия на български език с фокус върху локалния пазар.',
@@ -37,6 +39,7 @@ const services = [
   },
   {
     id: 'tehnichesko-seo',
+	slug: 'техническо-seo',
     icon: <Globe className="text-cyber-teal" size={48} />,
     title: 'Техническо SEO',
     description: 'Оптимизация на техническите аспекти на вашия сайт за по-добро индексиране и по-високи позиции.',
@@ -52,6 +55,7 @@ const services = [
   },
   {
     id: 'optimizaciya-na-sadarzhanie',
+	slug: 'оптимизация-на-съдържание',
     icon: <Code className="text-cyber-pink\" size={48} />,
     title: 'Оптимизация на Съдържание',
     description: 'Създаване и оптимизация на качествено съдържание, което привлича посетители и подобрява класирането ви.',
@@ -67,6 +71,7 @@ const services = [
   },
   {
     id: 'lokalno-seo',
+	slug: 'локално-seo',
     icon: <Users className="text-cyber-purple" size={48} />,
     title: 'Локално SEO',
     description: 'Оптимизация за локалните търсения в България, подобряване на видимостта в Google Maps и локалните списъци.',
@@ -82,6 +87,7 @@ const services = [
   },
   {
     id: 'strukturirani-danni',
+	slug: 'структурирани-данни',
     icon: <Database className="text-cyber-blue\" size={48} />,
     title: 'Структурирани Данни',
     description: 'Внедряване на Schema.org маркиране за по-добро представяне в резултатите от търсенето и rich snippets.',
@@ -97,6 +103,7 @@ const services = [
   },
   {
     id: 'seo-monitoring',
+	slug: 'seo-мониторинг',
     icon: <TrendingUp className="text-cyber-teal" size={48} />,
     title: 'SEO Мониторинг',
     description: 'Постоянно проследяване на вашите позиции и анализ на данните за непрекъснато подобрение.',
@@ -112,8 +119,9 @@ const services = [
   },
   {
     id: 'izgrazhdane-na-vrazki',
+	slug: 'линк-билдинг',
     icon: <Megaphone className="text-cyber-pink\" size={48} />,
-    title: 'Изграждане на Връзки',
+    title: 'Линк Билдинг',
     description: 'Стратегии за изграждане на качествени обратни връзки от авторитетни български сайтове.',
     benefits: [
       'Одит на съществуващите обратни връзки',
@@ -134,7 +142,7 @@ const ServicesPage: React.FC = () => {
         title="SEO Услуги | Професионална оптимизация за търсачки в България"
         description="Пълен набор от SEO услуги, персонализирани за българския пазар. От технически SEO одит до изграждане на обратни връзки и оптимизация на съдържание."
         keywords="SEO услуги, оптимизация за търсачки, SEO одит, ключови думи, техническо SEO, локално SEO, България"
-        canonicalUrl="https://stanchev-seo.bg/услуги"
+        canonicalUrl="https://stanchev.bg/услуги"
         structuredData={{
           "@context": "https://schema.org",
           "@type": "Service",
@@ -168,7 +176,8 @@ const ServicesPage: React.FC = () => {
           <div className="space-y-24">
             {services.map((service, index) => (
               <div key={index} id={service.id} className="scroll-mt-32">
-                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+                <div className="flex justify-center">
+					<div className="max-w-3xl w-full text-center">
                   <div>
                     <div className={`inline-block p-4 rounded-lg mb-6 bg-cyber-dark`}>
                       {service.icon}
@@ -188,50 +197,14 @@ const ServicesPage: React.FC = () => {
                       ))}
                     </ul>
                     <div className="mt-8">
-                      <Link to="/контакти" className="btn-primary">
-                        Заявете услугата
+                      <Link to={`/услуги/${service.slug}`} className="btn-primary">
+                        Виж още
                       </Link>
                     </div>
                   </div>
-                  <div>
-                    <CyberCard glowColor={service.color as any} className="h-full p-8">
-                      <div className="space-y-6">
-                        <h3 className="text-2xl font-bold">Как работи процесът?</h3>
-                        <ol className="space-y-4">
-                          <li className="flex">
-                            <span className={`flex-shrink-0 w-8 h-8 rounded-full bg-cyber-${service.color} flex items-center justify-center mr-4`}>1</span>
-                            <div>
-                              <p className="font-medium">Първоначална консултация</p>
-                              <p className="text-gray-400">Обсъждаме вашите цели и нужди</p>
-                            </div>
-                          </li>
-                          <li className="flex">
-                            <span className={`flex-shrink-0 w-8 h-8 rounded-full bg-cyber-${service.color} flex items-center justify-center mr-4`}>2</span>
-                            <div>
-                              <p className="font-medium">Анализ и планиране</p>
-                              <p className="text-gray-400">Разработвам персонализирана стратегия</p>
-                            </div>
-                          </li>
-                          <li className="flex">
-                            <span className={`flex-shrink-0 w-8 h-8 rounded-full bg-cyber-${service.color} flex items-center justify-center mr-4`}>3</span>
-                            <div>
-                              <p className="font-medium">Изпълнение</p>
-                              <p className="text-gray-400">Внедряване на оптимизациите</p>
-                            </div>
-                          </li>
-                          <li className="flex">
-                            <span className={`flex-shrink-0 w-8 h-8 rounded-full bg-cyber-${service.color} flex items-center justify-center mr-4`}>4</span>
-                            <div>
-                              <p className="font-medium">Мониторинг и отчитане</p>
-                              <p className="text-gray-400">Проследяване на резултатите и корекции</p>
-                            </div>
-                          </li>
-                        </ol>
-                      </div>
-                    </CyberCard>
-                  </div>
                 </div>
               </div>
+			 </div>
             ))}
           </div>
 
@@ -247,6 +220,44 @@ const ServicesPage: React.FC = () => {
               Свържете се с мен
             </Link>
           </div>
+		  {/* How It Works - Only on Mobile */}
+<div className="block lg:hidden mt-24">
+  <CyberCard glowColor="purple" className="p-8">
+    <div className="space-y-6">
+      <h3 className="text-2xl font-bold">Как работи процесът?</h3>
+      <ol className="space-y-4">
+        <li className="flex">
+          <span className="flex-shrink-0 w-8 h-8 rounded-full bg-cyber-purple flex items-center justify-center mr-4">1</span>
+          <div>
+            <p className="font-medium">Първоначална консултация</p>
+            <p className="text-gray-400">Обсъждаме вашите цели и нужди</p>
+          </div>
+        </li>
+        <li className="flex">
+          <span className="flex-shrink-0 w-8 h-8 rounded-full bg-cyber-purple flex items-center justify-center mr-4">2</span>
+          <div>
+            <p className="font-medium">Анализ и планиране</p>
+            <p className="text-gray-400">Разработвам персонализирана стратегия</p>
+          </div>
+        </li>
+        <li className="flex">
+          <span className="flex-shrink-0 w-8 h-8 rounded-full bg-cyber-purple flex items-center justify-center mr-4">3</span>
+          <div>
+            <p className="font-medium">Изпълнение</p>
+            <p className="text-gray-400">Внедряване на оптимизациите</p>
+          </div>
+        </li>
+        <li className="flex">
+          <span className="flex-shrink-0 w-8 h-8 rounded-full bg-cyber-purple flex items-center justify-center mr-4">4</span>
+          <div>
+            <p className="font-medium">Мониторинг и отчитане</p>
+            <p className="text-gray-400">Проследяване на резултатите и корекции</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </CyberCard>
+</div>
         </div>
       </div>
     </>
