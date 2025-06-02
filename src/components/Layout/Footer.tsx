@@ -56,7 +56,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-2 text-gray-400">
               <li>София, България</li>
               <li>тел: +359 88 888 8888</li>
-              <li>имейл: hello@stanchev.bg</li>
+              <li>имейл: seo@stanchev.bg</li>
             </ul>
           </div>
         </div>
