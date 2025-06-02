@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import SEOHead from '../components/Layout/SEOHead';
 import Hero from '../components/Home/Hero';
@@ -31,7 +32,7 @@ const HomePage: React.FC = () => {
             "addressCountry": "България"
           },
           "telephone": "+359 88 888 8888",
-          "email": "hello@stanchev.bg",
+          "email": "seo@stanchev.bg",
           "url": "https://stanchev.bg",
           "priceRange": "$$",
           "serviceArea": {
@@ -147,8 +148,8 @@ const HomePage: React.FC = () => {
             Готови ли сте да подобрите вашето <span className="neon-text">SEO</span>?
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-            Свържете се с мен за безплатна консултация и анализ на вашия уебсайт. Заедно ще създадем стратегия, която ще изведе вашия бизнес напред.
-          </p>
+			Свържете се с мен за <Link to="/услуги/консултация" className="text-cyber-blue hover:underline">безплатна SEO консултация</Link> и анализ на вашия уебсайт. Заедно ще създадем стратегия, която ще изведе вашия бизнес напред.
+		  </p>
           <a href="/контакти" className="btn-primary text-lg px-8 py-4">
             Свържете се с мен
           </a>
