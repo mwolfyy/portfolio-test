@@ -207,19 +207,6 @@ const ServicesPage: React.FC = () => {
 			 </div>
             ))}
           </div>
-
-          {/* CTA */}
-          <div className="mt-24 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Готови ли сте да подобрите вашите <span className="neon-text">SEO резултати</span>?
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-              Свържете се с мен за безплатна консултация и анализ на вашия уебсайт. Заедно ще създадем стратегия, която ще изведе вашия бизнес напред.
-            </p>
-            <Link to="/контакти" className="btn-primary text-lg px-8 py-4">
-              Свържете се с мен
-            </Link>
-          </div>
 		  {/* How It Works - Only on Mobile */}
 <div className="block lg:hidden mt-24">
   <CyberCard glowColor="purple" className="p-8">
@@ -258,6 +245,18 @@ const ServicesPage: React.FC = () => {
     </div>
   </CyberCard>
 </div>
+          {/* CTA */}
+          <div className="mt-24 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Готови ли сте да подобрите вашите <span className="neon-text">SEO резултати</span>?
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+              Свържете се с мен за безплатна консултация и анализ на вашия уебсайт. Заедно ще създадем стратегия, която ще изведе вашия бизнес напред.
+            </p>
+            <Link to="/контакти" className="btn-primary text-lg px-8 py-4">
+              Свържете се с мен
+            </Link>
+          </div>
         </div>
       </div>
     </>
