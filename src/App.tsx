@@ -18,6 +18,17 @@ import TermsPage from './pages/TermsPage';
 import CookiesPage from './pages/CookiesPage';
 import { ScrollToTop } from './components/Layout/ScrollToTop';
 import AdminRequests from './pages/admin/AdminRequests';
+import ConsultationPage from './pages/services/ConsultationPage';
+import AuditPage from './pages/services/AuditPage';
+import StrategyPage from './pages/services/StrategyPage';
+import OnPagePage from './pages/services/OnPagePage';
+import KeywordResearchPage from './pages/services/KeywordResearchPage';
+import TechnicalSEOPage from './pages/services/TechnicalSEOPage';
+import ContentOptimizationPage from './pages/services/ContentOptimizationPage';
+import LocalSEOPage from './pages/services/LocalSEOPage';
+import StructuredDataPage from './pages/services/StructuredDataPage';
+import LinkBuildingPage from './pages/services/LinkBuildingPage';
+import MonitoringPage from './pages/services/MonitoringPage';
 
 function App() {
   return (
@@ -35,6 +46,17 @@ function App() {
           <Route path="политика-за-поверителност" element={<PrivacyPage />} />
           <Route path="общи-условия" element={<TermsPage />} />
           <Route path="бисквитки" element={<CookiesPage />} />
+		      <Route path="услуги/консултация" element={<ConsultationPage />} />
+          <Route path="услуги/seo-одит" element={<AuditPage />} />
+          <Route path="услуги/стратегия" element={<StrategyPage />} />
+          <Route path="услуги/on-page-оптимизация" element={<OnPagePage />} />
+		      <Route path="услуги/ключови-думи" element={<KeywordResearchPage />} />
+		      <Route path="услуги/техническо-seo" element={<TechnicalSEOPage />} />
+		      <Route path="услуги/оптимизация-на-съдържание" element={<ContentOptimizationPage />} />
+		      <Route path="услуги/локално-seo" element={<LocalSEOPage />} />
+		      <Route path="услуги/структурирани-данни" element={<StructuredDataPage />} />
+		      <Route path="услуги/линк-билдинг" element={<LinkBuildingPage />} />
+		      <Route path="услуги/seo-мониторинг" element={<MonitoringPage />} />
           <Route path="*" element={<NotFoundPage />} />
           
           {/* Admin Routes */}
