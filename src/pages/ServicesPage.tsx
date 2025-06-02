@@ -188,7 +188,7 @@ const ServicesPage: React.FC = () => {
                     <p className="text-xl text-gray-300 mb-6">
                       {service.description}
                     </p>
-                    <ul className="space-y-3">
+                    <ul className="space-y-3 text-left">
                       {service.benefits.map((benefit, benefitIndex) => (
                         <li key={benefitIndex} className="flex items-start">
                           <CheckCircle className={`text-cyber-${service.color} mt-1 mr-3 flex-shrink-0`} size={20} />
