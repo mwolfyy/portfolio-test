@@ -30,16 +30,16 @@ const Footer: React.FC = () => {
             </div>
           </div>
           
-          <div className="col-span-1">
-            <h3 className="text-xl font-bold mb-4">Страници</h3>
-            <div className="grid grid-cols-2 gap-x-1 gap-y-2">
-            <Link to="/" className="text-gray-400 hover:text-white transition-colors">Начало</Link>
-            <Link to="/услуги" className="text-gray-400 hover:text-white transition-colors">Услуги</Link>
-            <Link to="/blog" className="text-gray-400 hover:text-white transition-colors">Блог</Link>
-            <Link to="/за-мен" className="text-gray-400 hover:text-white transition-colors">За мен</Link>
-            <Link to="/ресурси" className="text-gray-400 hover:text-white transition-colors">Ресурси</Link>
-            <Link to="/контакти" className="text-gray-400 hover:text-white transition-colors">Контакти</Link>
-              </div>
+         <div className="col-span-1">
+  <h3 className="text-xl font-bold mb-4">Страници</h3>
+  <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+    <Link to="/" className="text-gray-400 hover:text-white transition-colors w-fit leading-tight">Начало</Link>
+    <Link to="/услуги" className="text-gray-400 hover:text-white transition-colors w-fit leading-tight">Услуги</Link>
+    <Link to="/blog" className="text-gray-400 hover:text-white transition-colors w-fit leading-tight">Блог</Link>
+    <Link to="/за-мен" className="text-gray-400 hover:text-white transition-colors w-fit leading-tight">За мен</Link>
+    <Link to="/ресурси" className="text-gray-400 hover:text-white transition-colors w-fit leading-tight">Ресурси</Link>
+    <Link to="/контакти" className="text-gray-400 hover:text-white transition-colors w-fit leading-tight">Контакти</Link>
+  </div>
           </div>
           <div className="col-span-1">
             <h3 className="text-xl font-bold mb-4">Контакти</h3>
