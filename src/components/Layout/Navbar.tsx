@@ -66,7 +66,10 @@ const Navbar: React.FC = () => {
             <NavLink to="/за-мен" className="nav-link">
               За мен
             </NavLink>
-            <NavLink to="/контакти" className="nav-link">
+			<NavLink to="/ресурси" className="nav-link">
+            Ресурси
+          </NavLink>
+		    <NavLink to="/контакти" className="nav-link">
               Контакти
             </NavLink>
           </nav>
@@ -101,29 +104,12 @@ const Navbar: React.FC = () => {
           <NavLink to="/за-мен" className="nav-link text-2xl" onClick={toggleMenu}>
             За мен
           </NavLink>
-          <NavLink to="/контакти" className="nav-link text-2xl" onClick={toggleMenu}>
+		  <NavLink to="/ресурси" className="nav-link text-2xl" onClick={toggleMenu}>
+            Ресурси
+          </NavLink>
+		  <NavLink to="/контакти" className="nav-link text-2xl" onClick={toggleMenu}>
             Контакти
           </NavLink>
-          {isAuthenticated ? (
-            <>
-              <NavLink to="/admin" className="btn-primary py-3 px-8 rounded-md text-xl w-full text-center" onClick={toggleMenu}>
-                Админ
-              </NavLink>
-              <button
-                onClick={() => {
-                  logout();
-                  toggleMenu();
-                }}
-                className="btn-outline py-3 px-8 rounded-md text-xl w-full"
-              >
-                Изход
-              </button>
-            </>
-          ) : (
-            <NavLink to="/вход" className="btn-primary py-3 px-8 rounded-md text-xl w-full text-center" onClick={toggleMenu}>
-              Вход
-            </NavLink>
-          )}
         </div>
       </div>
     </header>
