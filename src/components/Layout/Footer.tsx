@@ -32,28 +32,15 @@ const Footer: React.FC = () => {
           
           <div className="col-span-1">
             <h3 className="text-xl font-bold mb-4">Страници</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-gray-400 hover:text-white transition-colors">Начало</Link>
-              </li>
-              <li>
-                <Link to="/услуги" className="text-gray-400 hover:text-white transition-colors">Услуги</Link>
-              </li>
-              <li>
-                <Link to="/blog" className="text-gray-400 hover:text-white transition-colors">Блог</Link>
-              </li>
-              <li>
-                <Link to="/за-мен" className="text-gray-400 hover:text-white transition-colors">За мен</Link>
-              </li>
-              <li>
-                <Link to="/ресурси" className="text-gray-400 hover:text-white transition-colors">Ресурси</Link>
-              </li>
-              <li>
-                <Link to="/контакти" className="text-gray-400 hover:text-white transition-colors">Контакти</Link>
-              </li>
-            </ul>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+            <Link to="/" className="text-gray-400 hover:text-white transition-colors">Начало</Link>
+            <Link to="/услуги" className="text-gray-400 hover:text-white transition-colors">Услуги</Link>
+            <Link to="/blog" className="text-gray-400 hover:text-white transition-colors">Блог</Link>
+            <Link to="/за-мен" className="text-gray-400 hover:text-white transition-colors">За мен</Link>
+            <Link to="/ресурси" className="text-gray-400 hover:text-white transition-colors">Ресурси</Link>
+            <Link to="/контакти" className="text-gray-400 hover:text-white transition-colors">Контакти</Link>
+              </div>
           </div>
-          
           <div className="col-span-1">
             <h3 className="text-xl font-bold mb-4">Контакти</h3>
             <ul className="space-y-2 text-gray-400">
