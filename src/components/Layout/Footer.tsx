@@ -46,6 +46,9 @@ const Footer: React.FC = () => {
                 <Link to="/за-мен" className="text-gray-400 hover:text-white transition-colors">За мен</Link>
               </li>
               <li>
+                <Link to="/ресурси" className="text-gray-400 hover:text-white transition-colors">Ресурси</Link>
+              </li>
+              <li>
                 <Link to="/контакти" className="text-gray-400 hover:text-white transition-colors">Контакти</Link>
               </li>
             </ul>
