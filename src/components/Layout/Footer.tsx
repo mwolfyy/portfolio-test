@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
           
          <div className="col-span-1">
   <h3 className="text-xl font-bold mb-4">Страници</h3>
-  <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+  <div className="grid grid-cols-2 gap-x-1 gap-y-1">
     <Link to="/" className="text-gray-400 hover:text-white transition-colors w-fit leading-tight">Начало</Link>
     <Link to="/услуги" className="text-gray-400 hover:text-white transition-colors w-fit leading-tight">Услуги</Link>
     <Link to="/blog" className="text-gray-400 hover:text-white transition-colors w-fit leading-tight">Блог</Link>
