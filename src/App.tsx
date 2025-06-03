@@ -29,6 +29,9 @@ import LocalSEOPage from './pages/services/LocalSEOPage';
 import StructuredDataPage from './pages/services/StructuredDataPage';
 import LinkBuildingPage from './pages/services/LinkBuildingPage';
 import MonitoringPage from './pages/services/MonitoringPage';
+import ResourcesHomePage from './pages/resources/ResourcesHomePage';
+import MetaTagGenerator from './pages/tools/MetaTagGenerator';
+import SchemaGenerator from './pages/tools/SchemaGenerator';
 
 function App() {
   return (
@@ -46,17 +49,20 @@ function App() {
           <Route path="политика-за-поверителност" element={<PrivacyPage />} />
           <Route path="общи-условия" element={<TermsPage />} />
           <Route path="бисквитки" element={<CookiesPage />} />
-		      <Route path="услуги/консултация" element={<ConsultationPage />} />
+		  <Route path="услуги/консултация" element={<ConsultationPage />} />
           <Route path="услуги/seo-одит" element={<AuditPage />} />
           <Route path="услуги/стратегия" element={<StrategyPage />} />
           <Route path="услуги/on-page-оптимизация" element={<OnPagePage />} />
-		      <Route path="услуги/ключови-думи" element={<KeywordResearchPage />} />
-		      <Route path="услуги/техническо-seo" element={<TechnicalSEOPage />} />
-		      <Route path="услуги/оптимизация-на-съдържание" element={<ContentOptimizationPage />} />
-		      <Route path="услуги/локално-seo" element={<LocalSEOPage />} />
-		      <Route path="услуги/структурирани-данни" element={<StructuredDataPage />} />
-		      <Route path="услуги/линк-билдинг" element={<LinkBuildingPage />} />
-		      <Route path="услуги/seo-мониторинг" element={<MonitoringPage />} />
+		  <Route path="услуги/ключови-думи" element={<KeywordResearchPage />} />
+		  <Route path="услуги/техническо-seo" element={<TechnicalSEOPage />} />
+		  <Route path="услуги/оптимизация-на-съдържание" element={<ContentOptimizationPage />} />
+		  <Route path="услуги/локално-seo" element={<LocalSEOPage />} />
+		  <Route path="услуги/структурирани-данни" element={<StructuredDataPage />} />
+		  <Route path="услуги/линк-билдинг" element={<LinkBuildingPage />} />
+		  <Route path="услуги/seo-мониторинг" element={<MonitoringPage />} />
+		  <Route path="/ресурси" element={<ResourcesHomePage />} />
+		  <Route path="/tools/meta-tag-generator" element={<MetaTagGenerator />} />
+		  <Route path="/tools/schema-generator" element={<SchemaGenerator />} />
           <Route path="*" element={<NotFoundPage />} />
           
           {/* Admin Routes */}
