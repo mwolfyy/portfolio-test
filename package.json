@@ -4,12 +4,11 @@
     "version": "1.0.0",
     "type": "module",
     "scripts": {
-        "resize-images": "ts-node tools/resize-images.ts",
-        "build": "npm run resize-images && vite build",
-        "dev": "vite",
-        "lint": "eslint .",
-        "preview": "vite preview"
-    },
+  "build": "vite build",
+  "dev": "vite",
+  "lint": "eslint .",
+  "preview": "vite preview"
+},
     "dependencies": {
         "@google-analytics/data": "^5.1.0",
         "@supabase/supabase-js": "^2.49.8",
