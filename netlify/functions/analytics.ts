@@ -1,7 +1,6 @@
-// netlify/functions/analytics.ts
+process.env.GOOGLE_APPLICATION_CREDENTIALS = path.resolve('./netlify/functions/lib/credentials.json');
 import { Handler } from '@netlify/functions';
 import { BetaAnalyticsDataClient } from '@google-analytics/data';
-
 const credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS_JSON || '');
 const propertyId = process.env.GA_PROPERTY_ID;
 
