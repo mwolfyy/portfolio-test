@@ -1,61 +1,42 @@
+// netlify/functions/analytics.ts
 import { Handler } from '@netlify/functions';
 import { BetaAnalyticsDataClient } from '@google-analytics/data';
-import { format } from 'date-fns-tz';
 
-const analyticsDataClient = new BetaAnalyticsDataClient();
+const credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS_JSON || '');
+const propertyId = process.env.GA_PROPERTY_ID;
 
-const propertyId = process.env.GA_PROPERTY_ID; // трябва да е от вида "properties/XXXXXXX"
+const analyticsDataClient = new BetaAnalyticsDataClient({ credentials });
 
 export const handler: Handler = async () => {
   try {
-    // Форматиране на вчерашна дата (00:00 BG TIME)
-    const timeZone = 'Europe/Sofia';
-    const today = new Date();
-    const yesterday = new Date(today);
-    yesterday.setDate(yesterday.getDate() - 1);
-    const formattedDate = format(yesterday, 'yyyy-MM-dd', { timeZone });
-
     const [response] = await analyticsDataClient.runReport({
       property: propertyId,
-      dateRanges: [
-        {
-          startDate: formattedDate,
-          endDate: formattedDate,
-        },
-      ],
+      dateRanges: [{ startDate: 'yesterday', endDate: 'yesterday' }],
       metrics: [
-        { name: 'users' },
+        { name: 'activeUsers' },
         { name: 'screenPageViews' },
         { name: 'averageSessionDuration' },
         { name: 'bounceRate' },
       ],
     });
 
-    const row = response.rows?.[0]?.metricValues || [];
-
-    const results = {
-      visitors: parseInt(row[0]?.value || '0', 10),
-      pageViews: parseInt(row[1]?.value || '0', 10),
-      avgTimeOnPage: formatSeconds(Number(row[2]?.value || '0')),
-      bounceRate: `${parseFloat(row[3]?.value || '0').toFixed(2)}%`,
+    const rows = response.rows || [];
+    const result = {
+      visitors: rows[0]?.metricValues?.[0]?.value ?? '0',
+      pageViews: rows[0]?.metricValues?.[1]?.value ?? '0',
+      avgTimeOnPage: rows[0]?.metricValues?.[2]?.value ?? '0',
+      bounceRate: rows[0]?.metricValues?.[3]?.value ?? '0%',
     };
 
     return {
       statusCode: 200,
-      body: JSON.stringify(results),
+      body: JSON.stringify(result),
     };
-  } catch (error: any) {
-    console.error(error);
+  } catch (err) {
+    console.error('GA4 API Error:', err);
     return {
       statusCode: 500,
-      body: JSON.stringify({ message: 'Грешка при извличане на аналитични данни', error }),
+      body: JSON.stringify({ error: 'Analytics fetch failed' }),
     };
   }
 };
-
-// Хелпър: конвертира секунди във формат mm:ss
-function formatSeconds(seconds: number): string {
-  const mins = Math.floor(seconds / 60);
-  const secs = Math.floor(seconds % 60);
-  return `${mins}:${secs.toString().padStart(2, '0')}`;
-}
