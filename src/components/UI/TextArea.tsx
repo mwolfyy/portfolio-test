@@ -1,4 +1,4 @@
-import React, { TextareaHTMLAttributes } from 'react';
+import React, { TextareaHTMLAttributes, forwardRef } from 'react';
 
 interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
@@ -6,13 +6,13 @@ interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   fullWidth?: boolean;
 }
 
-const TextArea: React.FC<TextAreaProps> = ({
+const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(({
   label,
   error,
   fullWidth = true,
   className = '',
   ...props
-}) => {
+}, ref) => {
   const widthClasses = fullWidth ? 'w-full' : '';
   
   return (
@@ -23,6 +23,7 @@ const TextArea: React.FC<TextAreaProps> = ({
         </label>
       )}
       <textarea
+        ref={ref}
         className={`w-full px-4 py-3 bg-cyber-gray border border-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-cyber-purple focus:border-transparent transition duration-200 min-h-[120px] ${
           error ? 'border-cyber-red focus:ring-cyber-red' : ''
         } ${className}`}
@@ -31,6 +32,8 @@ const TextArea: React.FC<TextAreaProps> = ({
       {error && <p className="mt-1 text-sm text-cyber-red">{error}</p>}
     </div>
   );
-};
+});
+
+TextArea.displayName = 'TextArea';
 
 export default TextArea;

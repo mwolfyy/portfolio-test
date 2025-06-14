@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes, forwardRef } from 'react';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -7,14 +7,14 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   icon?: React.ReactNode;
 }
 
-const Input: React.FC<InputProps> = ({
+const Input = forwardRef<HTMLInputElement, InputProps>(({
   label,
   error,
   fullWidth = true,
   icon,
   className = '',
   ...props
-}) => {
+}, ref) => {
   const widthClasses = fullWidth ? 'w-full' : '';
   
   return (
@@ -31,6 +31,7 @@ const Input: React.FC<InputProps> = ({
           </div>
         )}
         <input
+          ref={ref}
           className={`w-full px-4 py-3 ${
             icon ? 'pl-10' : ''
           } bg-cyber-gray border border-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-cyber-purple focus:border-transparent transition duration-200 ${
@@ -42,6 +43,8 @@ const Input: React.FC<InputProps> = ({
       {error && <p className="mt-1 text-sm text-cyber-red">{error}</p>}
     </div>
   );
-};
+});
+
+Input.displayName = 'Input';
 
 export default Input;
