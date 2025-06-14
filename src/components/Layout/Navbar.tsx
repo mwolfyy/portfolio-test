@@ -62,19 +62,19 @@ const Navbar: React.FC = () => {
             <Link href="/" className={`nav-link ${isActiveLink('/') ? 'active' : ''}`}>
               Начало
             </Link>
-            <Link href="/услуги" className={`nav-link ${isActiveLink('/услуги') ? 'active' : ''}`}>
+            <Link href="/uslugi" className={`nav-link ${isActiveLink('/uslugi') ? 'active' : ''}`}>
               Услуги
             </Link>
             <Link href="/blog" className={`nav-link ${isActiveLink('/blog') ? 'active' : ''}`}>
               Блог
             </Link>
-            <Link href="/за-мен" className={`nav-link ${isActiveLink('/за-мен') ? 'active' : ''}`}>
+            <Link href="/za-men" className={`nav-link ${isActiveLink('/za-men') ? 'active' : ''}`}>
               За мен
             </Link>
-            <Link href="/ресурси" className={`nav-link ${isActiveLink('/ресурси') ? 'active' : ''}`}>
+            <Link href="/resursi" className={`nav-link ${isActiveLink('/resursi') ? 'active' : ''}`}>
               Ресурси
             </Link>
-            <Link href="/контакти" className={`nav-link ${isActiveLink('/контакти') ? 'active' : ''}`}>
+            <Link href="/kontakti" className={`nav-link ${isActiveLink('/kontakti') ? 'active' : ''}`}>
               Контакти
             </Link>
           </nav>
@@ -100,19 +100,19 @@ const Navbar: React.FC = () => {
           <Link href="/" className="nav-link text-2xl" onClick={toggleMenu}>
             Начало
           </Link>
-          <Link href="/услуги" className="nav-link text-2xl" onClick={toggleMenu}>
+          <Link href="/uslugi" className="nav-link text-2xl" onClick={toggleMenu}>
             Услуги
           </Link>
           <Link href="/blog" className="nav-link text-2xl" onClick={toggleMenu}>
             Блог
           </Link>
-          <Link href="/за-мен" className="nav-link text-2xl" onClick={toggleMenu}>
+          <Link href="/za-men" className="nav-link text-2xl" onClick={toggleMenu}>
             За мен
           </Link>
-          <Link href="/ресурси" className="nav-link text-2xl" onClick={toggleMenu}>
+          <Link href="/resursi" className="nav-link text-2xl" onClick={toggleMenu}>
             Ресурси
           </Link>
-          <Link href="/контакти" className="nav-link text-2xl" onClick={toggleMenu}>
+          <Link href="/kontakti" className="nav-link text-2xl" onClick={toggleMenu}>
             Контакти
           </Link>
         </div>

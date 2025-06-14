@@ -34,11 +34,11 @@ const Footer: React.FC = () => {
             <h3 className="text-xl font-bold mb-4">Страници</h3>
             <div className="grid grid-cols-2 gap-x-1 gap-y-2">
               <Link href="/" className="text-gray-400 hover:text-white transition-colors w-fit leading-tight">Начало</Link>
-              <Link href="/услуги" className="text-gray-400 hover:text-white transition-colors w-fit leading-tight">Услуги</Link>
+              <Link href="/uslugi" className="text-gray-400 hover:text-white transition-colors w-fit leading-tight">Услуги</Link>
               <Link href="/blog" className="text-gray-400 hover:text-white transition-colors w-fit leading-tight">Блог</Link>
-              <Link href="/за-мен" className="text-gray-400 hover:text-white transition-colors w-fit leading-tight">За мен</Link>
-              <Link href="/ресурси" className="text-gray-400 hover:text-white transition-colors w-fit leading-tight">Ресурси</Link>
-              <Link href="/контакти" className="text-gray-400 hover:text-white transition-colors w-fit leading-tight">Контакти</Link>
+              <Link href="/za-men" className="text-gray-400 hover:text-white transition-colors w-fit leading-tight">За мен</Link>
+              <Link href="/resursi" className="text-gray-400 hover:text-white transition-colors w-fit leading-tight">Ресурси</Link>
+              <Link href="/kontakti" className="text-gray-400 hover:text-white transition-colors w-fit leading-tight">Контакти</Link>
             </div>
           </div>
           <div className="col-span-1">
@@ -56,13 +56,13 @@ const Footer: React.FC = () => {
             &copy; {currentYear} Станчев SEO. Всички права запазени.
           </p>
           <div className="mt-2 flex justify-center space-x-6">
-            <Link href="/политика-за-поверителност" className="text-gray-500 hover:text-white text-sm transition-colors">
+            <Link href="/politika-za-poveritelnost" className="text-gray-500 hover:text-white text-sm transition-colors">
               Политика за поверителност
             </Link>
-            <Link href="/общи-условия" className="text-gray-500 hover:text-white text-sm transition-colors">
+            <Link href="/obshti-usloviya" className="text-gray-500 hover:text-white text-sm transition-colors">
               Общи условия
             </Link>
-            <Link href="/бисквитки" className="text-gray-500 hover:text-white text-sm transition-colors">
+            <Link href="/biskvitki" className="text-gray-500 hover:text-white text-sm transition-colors">
               Бисквитки
             </Link>
           </div>

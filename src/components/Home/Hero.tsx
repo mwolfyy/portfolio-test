@@ -28,7 +28,7 @@ const Hero: React.FC = () => {
           />
           
           <div className="flex flex-col items-center md:flex-row justify-center gap-4 mt-8">
-            <Link href="/услуги" className="w-full md:w-auto">
+            <Link href="/uslugi" className="w-full md:w-auto">
               <Button variant="primary" size="lg" icon={<ArrowRight size={20} />} fullWidth className="text-lg md:text-base">
                 Разгледай Услугите
               </Button>

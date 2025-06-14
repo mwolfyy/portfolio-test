@@ -88,7 +88,7 @@ export default function HomePage({ recentPosts }: HomePageProps) {
               <p className="text-gray-400 mb-8">
                 Като SEO специалист, се фокусирам върху създаването на персонализирани стратегии, които отговарят на специфичните нужди на всеки бизнес. Моят подход комбинира технически познания, анализ на данни и креативно мислене, за да постигнем максимални резултати.
               </p>
-              <Link href="/за-мен" className="btn-primary inline-flex items-center">
+              <Link href="/za-men" className="btn-primary inline-flex items-center">
                 Научи повече за мен
                 <ArrowRight className="ml-2" size={20} />
               </Link>
@@ -166,9 +166,9 @@ export default function HomePage({ recentPosts }: HomePageProps) {
             Готови ли сте да подобрите вашето <span className="neon-text">SEO</span>?
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-            Свържете се с мен за <Link href="/услуги/консултация" className="text-cyber-blue hover:underline">безплатна SEO консултация</Link> и анализ на вашия уебсайт. Заедно ще създадем стратегия, която ще изведе вашия бизнес напред.
+            Свържете се с мен за <Link href="/uslugi/konsultatsiya" className="text-cyber-blue hover:underline">безплатна SEO консултация</Link> и анализ на вашия уебсайт. Заедно ще създадем стратегия, която ще изведе вашия бизнес напред.
           </p>
-          <Link href="/контакти" className="btn-primary text-lg px-8 py-4">
+          <Link href="/kontakti" className="btn-primary text-lg px-8 py-4">
             Свържете се с мен
           </Link>
         </div>

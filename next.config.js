@@ -28,6 +28,47 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // Redirect Cyrillic URLs to Latin equivalents
+      {
+        source: '/услуги',
+        destination: '/uslugi',
+        permanent: true
+      },
+      {
+        source: '/за-мен',
+        destination: '/za-men',
+        permanent: true
+      },
+      {
+        source: '/контакти',
+        destination: '/kontakti',
+        permanent: true
+      },
+      {
+        source: '/ресурси',
+        destination: '/resursi',
+        permanent: true
+      },
+      {
+        source: '/политика-за-поверителност',
+        destination: '/politika-za-poveritelnost',
+        permanent: true
+      },
+      {
+        source: '/общи-условия',
+        destination: '/obshti-usloviya',
+        permanent: true
+      },
+      {
+        source: '/бисквитки',
+        destination: '/biskvitki',
+        permanent: true
+      },
+      {
+        source: '/услуги/:path*',
+        destination: '/uslugi/:path*',
+        permanent: true
+      },
       {
         source: '/blog/:slug*',
         destination: '/blog/:slug*',

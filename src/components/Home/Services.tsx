@@ -83,7 +83,7 @@ const Services: React.FC = () => {
                 <h3 className="text-xl font-bold mb-3">{service.title}</h3>
                 <p className="text-gray-400 flex-grow mb-4">{service.description}</p>
                 <Link 
-                  href={`/услуги/${service.title.toLowerCase().replace(/\s+/g, '-')}`}
+                  href={`/uslugi/${service.title.toLowerCase().replace(/\s+/g, '-')}`}
                   className="text-cyber-blue hover:text-cyber-purple transition-colors inline-flex items-center mt-auto"
                 >
                   Научи повече
@@ -95,7 +95,7 @@ const Services: React.FC = () => {
         </div>
         
         <div className="text-center mt-12">
-          <Link href="/услуги">
+          <Link href="/uslugi">
             <button className="btn-primary">
               Виж всички услуги
             </button>

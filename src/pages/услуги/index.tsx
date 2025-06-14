@@ -8,7 +8,7 @@ import CyberCard from '@/components/UI/CyberCard';
 const services = [
   {
     id: 'seo-odit',
-    slug: 'seo-одит',
+    slug: 'seo-odit',
     icon: <Search className="text-cyber-purple" size={48} />,
     title: 'SEO Одит',
     description: 'Задълбочен анализ на вашия уебсайт и конкурентите ви за откриване на възможности за подобрение.',
@@ -24,7 +24,7 @@ const services = [
   },
   {
     id: 'klyuchovi-dumi',
-    slug: 'ключови-думи',
+    slug: 'klyuchovi-dumi',
     icon: <BarChart3 className="text-cyber-blue" size={48} />,
     title: 'Проучване на Ключови Думи',
     description: 'Проучване и анализ на ключови думи за вашата индустрия на български език с фокус върху локалния пазар.',
@@ -40,7 +40,7 @@ const services = [
   },
   {
     id: 'tehnichesko-seo',
-    slug: 'техническо-seo',
+    slug: 'tehnichesko-seo',
     icon: <Globe className="text-cyber-teal" size={48} />,
     title: 'Техническо SEO',
     description: 'Оптимизация на техническите аспекти на вашия сайт за по-добро индексиране и по-високи позиции.',
@@ -56,7 +56,7 @@ const services = [
   },
   {
     id: 'optimizaciya-na-sadarzhanie',
-    slug: 'оптимизация-на-съдържание',
+    slug: 'optimizatsiya-na-sadarzhanie',
     icon: <Code className="text-cyber-pink" size={48} />,
     title: 'Оптимизация на Съдържание',
     description: 'Създаване и оптимизация на качествено съдържание, което привлича посетители и подобрява класирането ви.',
@@ -72,7 +72,7 @@ const services = [
   },
   {
     id: 'lokalno-seo',
-    slug: 'локално-seo',
+    slug: 'lokalno-seo',
     icon: <Users className="text-cyber-purple" size={48} />,
     title: 'Локално SEO',
     description: 'Оптимизация за локалните търсения в България, подобряване на видимостта в Google Maps и локалните списъци.',
@@ -88,7 +88,7 @@ const services = [
   },
   {
     id: 'strukturirani-danni',
-    slug: 'структурирани-данни',
+    slug: 'strukturirani-danni',
     icon: <Database className="text-cyber-blue" size={48} />,
     title: 'Структурирани Данни',
     description: 'Внедряване на Schema.org маркиране за по-добро представяне в резултатите от търсенето и rich snippets.',
@@ -104,7 +104,7 @@ const services = [
   },
   {
     id: 'seo-monitoring',
-    slug: 'seo-мониторинг',
+    slug: 'seo-monitoring',
     icon: <TrendingUp className="text-cyber-teal" size={48} />,
     title: 'SEO Мониторинг',
     description: 'Постоянно проследяване на вашите позиции и анализ на данните за непрекъснато подобрение.',
@@ -120,7 +120,7 @@ const services = [
   },
   {
     id: 'izgrazhdane-na-vrazki',
-    slug: 'линк-билдинг',
+    slug: 'link-bilding',
     icon: <Megaphone className="text-cyber-pink" size={48} />,
     title: 'Линк Билдинг',
     description: 'Стратегии за изграждане на качествени обратни връзки от авторитетни български сайтове.',
@@ -143,7 +143,7 @@ export default function ServicesPage() {
         <title>SEO Услуги | Професионална оптимизация за търсачки в България</title>
         <meta name="description" content="Пълен набор от SEO услуги, персонализирани за българския пазар. От технически SEO одит до изграждане на обратни връзки и оптимизация на съдържание." />
         <meta name="keywords" content="SEO услуги, оптимизация за търсачки, SEO одит, ключови думи, техническо SEO, локално SEO, България" />
-        <link rel="canonical" href="https://stanchev.bg/услуги" />
+        <link rel="canonical" href="https://stanchev.bg/uslugi" />
         
         <script
           type="application/ld+json"
@@ -204,7 +204,7 @@ export default function ServicesPage() {
                         ))}
                       </ul>
                       <div className="mt-8">
-                        <Link href={`/услуги/${service.slug}`} className="btn-primary">
+                        <Link href={`/uslugi/${service.slug}`} className="btn-primary">
                           Виж още
                         </Link>
                       </div>
@@ -262,7 +262,7 @@ export default function ServicesPage() {
             <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
               Свържете се с мен за безплатна консултация и анализ на вашия уебсайт. Заедно ще създадем стратегия, която ще изведе вашия бизнес напред.
             </p>
-            <Link href="/контакти" className="btn-primary text-lg px-8 py-4">
+            <Link href="/kontakti" className="btn-primary text-lg px-8 py-4">
               Свържете се с мен
             </Link>
           </div>
