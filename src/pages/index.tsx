@@ -6,7 +6,7 @@ import Layout from '@/components/Layout/Layout';
 import Hero from '@/components/Home/Hero';
 import Services from '@/components/Home/Services';
 import CyberCard from '@/components/UI/CyberCard';
-import { useBlogStore } from '@/store/blogStore';
+import { getAllPosts } from '@/lib/blogData';
 import { Post } from '@/types/blog';
 
 interface HomePageProps {
@@ -178,10 +178,9 @@ export default function HomePage({ recentPosts }: HomePageProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  // In a real app, you would fetch this data from your CMS or database
-  const { posts } = useBlogStore.getState();
-  const recentPosts = posts
-    .filter(post => post.status === 'published')
+  // Use the new data source instead of Zustand store
+  const allPosts = getAllPosts();
+  const recentPosts = allPosts
     .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
     .slice(0, 3);
 

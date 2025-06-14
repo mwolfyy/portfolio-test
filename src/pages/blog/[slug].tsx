@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { ArrowLeft, Clock, User, Tag, Edit } from 'lucide-react';
 import Layout from '@/components/Layout/Layout';
 import CyberCard from '@/components/UI/CyberCard';
-import { useBlogStore } from '@/store/blogStore';
+import { getAllPosts, getPostBySlug, getRelatedPosts } from '@/lib/blogData';
 import { formatDate } from '@/utils/formatters';
 import { useAuth } from '@/context/AuthContext';
 import ReactMarkdown from 'react-markdown';
@@ -146,7 +146,7 @@ export default function BlogPostPage({ post, relatedPosts }: BlogPostPageProps) 
                   <p className="text-gray-300 mb-4">
                     Станчев е SEO експерт с над 5 години опит в оптимизацията за търсачки за българския пазар.
                   </p>
-                  <Link href="/за-мен" className="text-cyber-blue hover:text-cyber-purple transition-colors">
+                  <Link href="/za-men" className="text-cyber-blue hover:text-cyber-purple transition-colors">
                     Научете повече
                   </Link>
                 </div>
@@ -182,10 +182,9 @@ export default function BlogPostPage({ post, relatedPosts }: BlogPostPageProps) 
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { posts } = useBlogStore.getState();
-  const publishedPosts = posts.filter(post => post.status === 'published');
+  const posts = getAllPosts();
   
-  const paths = publishedPosts.map((post) => ({
+  const paths = posts.map((post) => ({
     params: { slug: post.slug },
   }));
 
@@ -196,8 +195,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { posts } = useBlogStore.getState();
-  const post = posts.find(p => p.slug === params?.slug && p.status === 'published');
+  const post = getPostBySlug(params?.slug as string);
   
   if (!post) {
     return {
@@ -206,13 +204,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 
   // Get related posts based on tags
-  const relatedPosts = posts
-    .filter(p => 
-      p.id !== post.id && 
-      p.status === 'published' && 
-      p.tags.some(tag => post.tags.includes(tag))
-    )
-    .slice(0, 3);
+  const relatedPosts = getRelatedPosts(post, 3);
 
   return {
     props: {

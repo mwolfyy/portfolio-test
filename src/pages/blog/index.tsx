@@ -6,7 +6,7 @@ import { Search, Tag } from 'lucide-react';
 import Layout from '@/components/Layout/Layout';
 import BlogCard from '@/components/Blog/BlogCard';
 import Input from '@/components/UI/Input';
-import { useBlogStore } from '@/store/blogStore';
+import { getAllPosts, getAllTags } from '@/lib/blogData';
 import { Post } from '@/types/blog';
 
 interface BlogPageProps {
@@ -149,17 +149,13 @@ export default function BlogPage({ posts, allTags }: BlogPageProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { posts } = useBlogStore.getState();
-  const publishedPosts = posts.filter(post => post.status === 'published');
-  
-  // Get all unique tags from posts
-  const allTags = Array.from(
-    new Set(publishedPosts.flatMap(post => post.tags))
-  );
+  // Use the new data source
+  const posts = getAllPosts();
+  const allTags = getAllTags();
 
   return {
     props: {
-      posts: publishedPosts,
+      posts,
       allTags,
     },
     revalidate: 3600, // Revalidate every hour
