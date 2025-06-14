@@ -1,22 +1,20 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { GetStaticProps } from 'next';
+import Head from 'next/head';
 import { MapPin, Phone, Mail, Send } from 'lucide-react';
-import SEOHead from '../components/Layout/SEOHead';
-import Input from '../components/UI/Input';
-import TextArea from '../components/UI/TextArea';
-import Button from '../components/UI/Button';
-import CyberCard from '../components/UI/CyberCard';
+import Layout from '@/components/Layout/Layout';
+import Input from '@/components/UI/Input';
+import TextArea from '@/components/UI/TextArea';
+import Button from '@/components/UI/Button';
+import CyberCard from '@/components/UI/CyberCard';
 
-const ContactPage: React.FC = () => {
+export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     subject: '',
     message: '',
-    Status: 'ново',
-    Pinned: 'false',
-    DeletedAt: '',
-    Date: new Date().toISOString(),
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -64,7 +62,7 @@ const ContactPage: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/.netlify/functions/contact', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -93,27 +91,33 @@ const ContactPage: React.FC = () => {
   };
 
   return (
-    <>
-      <SEOHead
-        title="Контакти | SEO Специалист Станчев"
-        description="Свържете се със Станчев - SEO специалист за българския пазар. Безплатна консултация и персонализирани решения за вашия бизнес."
-        keywords="контакти, SEO консултация, SEO специалист, Станчев контакти"
-        canonicalUrl="https://stanchev.bg/контакти"
-        structuredData={{
-          "@context": "https://schema.org",
-          "@type": "ContactPage",
-          "name": "Контакти",
-          "description": "Свържете се със Станчев - SEO специалист за българския пазар",
-          "url": "https://stanchev.bg/контакти",
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+359 88 888 8888",
-            "contactType": "customer service",
-            "areaServed": "BG",
-            "availableLanguage": "Bulgarian"
-          }
-        }}
-      />
+    <Layout>
+      <Head>
+        <title>Контакти | SEO Специалист Станчев</title>
+        <meta name="description" content="Свържете се със Станчев - SEO специалист за българския пазар. Безплатна консултация и персонализирани решения за вашия бизнес." />
+        <meta name="keywords" content="контакти, SEO консултация, SEO специалист, Станчев контакти" />
+        <link rel="canonical" href="https://stanchev.bg/kontakti" />
+        
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ContactPage",
+              "name": "Контакти",
+              "description": "Свържете се със Станчев - SEO специалист за българския пазар",
+              "url": "https://stanchev.bg/kontakti",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+359 88 888 8888",
+                "contactType": "customer service",
+                "areaServed": "BG",
+                "availableLanguage": "Bulgarian"
+              }
+            })
+          }}
+        />
+      </Head>
 
       <div className="pt-24 pb-20">
         <div className="container mx-auto px-4">
@@ -259,8 +263,12 @@ const ContactPage: React.FC = () => {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   );
-};
+}
 
-export default ContactPage;
+export const getStaticProps: GetStaticProps = async () => {
+  return {
+    props: {},
+  };
+};

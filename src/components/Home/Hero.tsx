@@ -1,18 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Download } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Button from '@/components/UI/Button';
-import { useCV } from '@/hooks/useCV';
-import EditableContent from '@/components/Admin/EditableContent';
-import SeoInnovativeBackground from '@/components/UI/Particles';
 
 const Hero: React.FC = () => {
-  const { generateCV, isGenerating } = useCV();
-
   return (
     <div className="relative min-h-screen flex items-center">
       <div className="absolute inset-0 overflow-hidden">
-        <SeoInnovativeBackground />
         <div className="absolute inset-0 bg-cyber-black bg-grid-pattern bg-grid-pattern opacity-10"></div>
       </div>
       
@@ -22,10 +16,9 @@ const Hero: React.FC = () => {
             SEO <span className="neon-text">Оптимизация</span> за Българския Пазар
           </h1>
           
-          <EditableContent
-            id="hero-description"
-            className="text-xl md:text-2xl text-gray-300 mb-8"
-          />
+          <p className="text-xl md:text-2xl text-gray-300 mb-8">
+            Помагам на българските бизнеси да постигнат по-добра видимост в Google и да привлекат повече клиенти чрез професионални SEO услуги.
+          </p>
           
           <div className="flex flex-col items-center md:flex-row justify-center gap-4 mt-8">
             <Link href="/uslugi" className="w-full md:w-auto">
@@ -33,17 +26,6 @@ const Hero: React.FC = () => {
                 Разгледай Услугите
               </Button>
             </Link>
-            
-            <Button 
-              variant="outline" 
-              size="md"
-              icon={<Download size={18} />}
-              onClick={generateCV}
-              isLoading={isGenerating}
-              className="w-full md:w-auto"
-            >
-              Свали CV
-            </Button>
           </div>
           
           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">

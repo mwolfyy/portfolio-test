@@ -1,10 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Download, CheckCircle, Award, BookOpen, Briefcase, Lightbulb } from 'lucide-react';
-import SEOHead from '../components/Layout/SEOHead';
-import Button from '../components/UI/Button';
-import CyberCard from '../components/UI/CyberCard';
-import { useCV } from '../hooks/useCV';
+import { GetStaticProps } from 'next';
+import Head from 'next/head';
+import Link from 'next/link';
+import { CheckCircle, Award, BookOpen, Briefcase, Lightbulb } from 'lucide-react';
+import Layout from '@/components/Layout/Layout';
+import Button from '@/components/UI/Button';
+import CyberCard from '@/components/UI/CyberCard';
 
 const skills = [
   'Технически SEO одит',
@@ -38,29 +38,33 @@ const experience = [
   },
 ];
 
-const AboutPage: React.FC = () => {
-  const { generateCV, isGenerating } = useCV();
-
+export default function AboutPage() {
   return (
-    <>
-      <SEOHead
-        title="За мен | SEO Специалист Станчев"
-        description="Запознайте се със Станчев - SEO специалист с богат опит в оптимизацията за търсачки за българския пазар. Научете повече за моите умения и опит."
-        keywords="SEO специалист, SEO експерт България, Станчев, оптимизация за търсачки, SEO консултант"
-        canonicalUrl="https://stanchev.bg/за-мен"
-        structuredData={{
-          "@context": "https://schema.org",
-          "@type": "Person",
-          "name": "Станчев",
-          "jobTitle": "SEO Специалист",
-          "description": "SEO специалист с опит в оптимизацията за търсачки за българския пазар",
-          "knowsAbout": ["SEO", "Дигитален маркетинг", "Анализ на данни", "Оптимизация на уебсайтове",],
-          "worksFor": {
-            "@type": "Organization",
-            "name": "Станчев SEO"
-          }
-        }}
-      />
+    <Layout>
+      <Head>
+        <title>За мен | SEO Специалист Станчев</title>
+        <meta name="description" content="Запознайте се със Станчев - SEO специалист с богат опит в оптимизацията за търсачки за българския пазар. Научете повече за моите умения и опит." />
+        <meta name="keywords" content="SEO специалист, SEO експерт България, Станчев, оптимизация за търсачки, SEO консултант" />
+        <link rel="canonical" href="https://stanchev.bg/za-men" />
+        
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Станчев",
+              "jobTitle": "SEO Специалист",
+              "description": "SEO специалист с опит в оптимизацията за търсачки за българския пазар",
+              "knowsAbout": ["SEO", "Дигитален маркетинг", "Анализ на данни", "Оптимизация на уебсайтове"],
+              "worksFor": {
+                "@type": "Organization",
+                "name": "Станчев SEO"
+              }
+            })
+          }}
+        />
+      </Head>
 
       <div className="pt-24 pb-20">
         <div className="container mx-auto px-4">
@@ -78,19 +82,11 @@ const AboutPage: React.FC = () => {
                   Помагам на бизнеси да подобрят своето онлайн присъствие, да достигнат до повече клиенти и да постигнат по-високи позиции в търсачките. Моят подход съчетава технически познания, креативност и разбиране на българския пазар.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <Link to="/контакти">
+                  <Link href="/kontakti">
                     <Button variant="primary">
                       Свържете се с мен
                     </Button>
                   </Link>
-                  <Button 
-                    variant="outline" 
-                    icon={<Download size={20} />}
-                    onClick={generateCV}
-                    isLoading={isGenerating}
-                  >
-                    Свали CV
-                  </Button>
                 </div>
               </div>
               <div>
@@ -200,26 +196,21 @@ const AboutPage: React.FC = () => {
               Свържете се с мен за безплатна консултация и нека обсъдим как мога да помогна на вашия бизнес да постигне по-добри резултати онлайн.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link to="/контакти">
+              <Link href="/kontakti">
                 <Button variant="primary" size="lg">
                   Свържете се с мен
                 </Button>
               </Link>
-              <Button 
-                variant="outline" 
-                size="lg"
-                icon={<Download size={20} />}
-                onClick={generateCV}
-                isLoading={isGenerating}
-              >
-                Свали CV
-              </Button>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   );
-};
+}
 
-export default AboutPage;
+export const getStaticProps: GetStaticProps = async () => {
+  return {
+    props: {},
+  };
+};

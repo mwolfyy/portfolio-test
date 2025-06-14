@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import { Search, BarChart3, Globe, Code, Users, Database, TrendingUp, Megaphone, ArrowRight } from 'lucide-react';
 import CyberCard from '@/components/UI/CyberCard';
-import EditableContent from '@/components/Admin/EditableContent';
 
 const services = [
   {
@@ -63,10 +62,9 @@ const Services: React.FC = () => {
           <h2 className="text-4xl font-bold mb-4">
             Моите <span className="neon-text">SEO Услуги</span>
           </h2>
-          <EditableContent
-            id="services-description"
-            className="text-xl text-gray-300 max-w-3xl mx-auto"
-          />
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Предлагам пълен набор от SEO услуги, специално адаптирани за българския пазар и особеностите на местното търсене.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
