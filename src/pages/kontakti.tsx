@@ -62,14 +62,9 @@ export default function ContactPage() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) throw new Error('Грешка при изпращане');
-
+      // Simulate form submission for demo
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
       setIsSubmitted(true);
       setFormData({
         name: '',
