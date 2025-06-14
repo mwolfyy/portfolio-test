@@ -1,6 +1,5 @@
-// src/context/AuthContext.tsx
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { supabase } from '../lib/supabaseClient';
+import { supabase } from '@/lib/supabaseClient';
 
 interface AuthContextType {
   isAuthenticated: boolean;
@@ -49,7 +48,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
       if (error || !data.user) return false;
 
-      // Проверка за администратор по роля от таблица 'profiles'
+      // Check for admin role from profiles table
       const { data: profile, error: profileError } = await supabase
         .from('profiles')
         .select('role')
@@ -61,8 +60,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         return false;
       }
 
-      // Запис в localStorage (по избор)
-      localStorage.setItem('auth_token', data.session.access_token);
+      // Store in localStorage (optional)
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('auth_token', data.session.access_token);
+      }
       setIsAuthenticated(true);
       return true;
 
@@ -74,7 +75,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const logout = async () => {
     await supabase.auth.signOut();
-    localStorage.removeItem('auth_token');
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('auth_token');
+    }
     setIsAuthenticated(false);
   };
 

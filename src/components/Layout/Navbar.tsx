@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Menu, X, Terminal } from 'lucide-react';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '@/context/AuthContext';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { isAuthenticated, logout } = useAuth();
-  const location = useLocation();
+  const router = useRouter();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -18,7 +19,7 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     setIsOpen(false);
     document.body.style.overflow = 'auto';
-  }, [location]);
+  }, [router.pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,6 +38,10 @@ const Navbar: React.FC = () => {
     };
   }, []);
 
+  const isActiveLink = (href: string) => {
+    return router.pathname === href || router.asPath === href;
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -47,31 +52,31 @@ const Navbar: React.FC = () => {
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center space-x-2 text-2xl font-bold">
+          <Link href="/" className="flex items-center space-x-2 text-2xl font-bold">
             <Terminal className="text-cyber-blue" size={32} />
             <span className="neon-text">Станчев SEO</span>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <NavLink to="/" className="nav-link">
+            <Link href="/" className={`nav-link ${isActiveLink('/') ? 'active' : ''}`}>
               Начало
-            </NavLink>
-            <NavLink to="/услуги" className="nav-link">
+            </Link>
+            <Link href="/услуги" className={`nav-link ${isActiveLink('/услуги') ? 'active' : ''}`}>
               Услуги
-            </NavLink>
-            <NavLink to="/blog" className="nav-link">
+            </Link>
+            <Link href="/blog" className={`nav-link ${isActiveLink('/blog') ? 'active' : ''}`}>
               Блог
-            </NavLink>
-            <NavLink to="/за-мен" className="nav-link">
+            </Link>
+            <Link href="/за-мен" className={`nav-link ${isActiveLink('/за-мен') ? 'active' : ''}`}>
               За мен
-            </NavLink>
-			<NavLink to="/ресурси" className="nav-link">
-            Ресурси
-          </NavLink>
-		    <NavLink to="/контакти" className="nav-link">
+            </Link>
+            <Link href="/ресурси" className={`nav-link ${isActiveLink('/ресурси') ? 'active' : ''}`}>
+              Ресурси
+            </Link>
+            <Link href="/контакти" className={`nav-link ${isActiveLink('/контакти') ? 'active' : ''}`}>
               Контакти
-            </NavLink>
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -92,24 +97,24 @@ const Navbar: React.FC = () => {
         }`}
       >
         <div className="flex flex-col items-center justify-center h-full space-y-8 p-8">
-          <NavLink to="/" className="nav-link text-2xl" onClick={toggleMenu}>
+          <Link href="/" className="nav-link text-2xl" onClick={toggleMenu}>
             Начало
-          </NavLink>
-          <NavLink to="/услуги" className="nav-link text-2xl" onClick={toggleMenu}>
+          </Link>
+          <Link href="/услуги" className="nav-link text-2xl" onClick={toggleMenu}>
             Услуги
-          </NavLink>
-          <NavLink to="/blog" className="nav-link text-2xl" onClick={toggleMenu}>
+          </Link>
+          <Link href="/blog" className="nav-link text-2xl" onClick={toggleMenu}>
             Блог
-          </NavLink>
-          <NavLink to="/за-мен" className="nav-link text-2xl" onClick={toggleMenu}>
+          </Link>
+          <Link href="/за-мен" className="nav-link text-2xl" onClick={toggleMenu}>
             За мен
-          </NavLink>
-		  <NavLink to="/ресурси" className="nav-link text-2xl" onClick={toggleMenu}>
+          </Link>
+          <Link href="/ресурси" className="nav-link text-2xl" onClick={toggleMenu}>
             Ресурси
-          </NavLink>
-		  <NavLink to="/контакти" className="nav-link text-2xl" onClick={toggleMenu}>
+          </Link>
+          <Link href="/контакти" className="nav-link text-2xl" onClick={toggleMenu}>
             Контакти
-          </NavLink>
+          </Link>
         </div>
       </div>
     </header>

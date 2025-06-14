@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Clock, User, Tag, ArrowRight } from 'lucide-react';
-import { formatDate } from '../../utils/formatters';
-import { Post } from '../../types/blog';
-import CyberCard from '../UI/CyberCard';
+import { formatDate } from '@/utils/formatters';
+import { Post } from '@/types/blog';
+import CyberCard from '@/components/UI/CyberCard';
 
 interface BlogCardProps {
   post: Post;
@@ -29,7 +29,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
   return (
     <CyberCard className="h-full transition-transform duration-300 hover:translate-y-[-5px]">
       <article className="flex flex-col h-full">
-        <Link to={`/blog/${post.slug}`} className="block mb-4">
+        <Link href={`/blog/${post.slug}`} className="block mb-4">
           <h3 className="text-xl font-bold mb-2 hover:text-cyber-purple transition-colors">
             {post.title}
           </h3>
@@ -65,7 +65,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
           </div>
           
           <Link
-            to={`/blog/${post.slug}`}
+            href={`/blog/${post.slug}`}
             className="text-cyber-blue hover:text-cyber-purple transition-colors inline-flex items-center"
           >
             Прочети повече

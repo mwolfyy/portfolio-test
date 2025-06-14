@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ArrowRight, Download } from 'lucide-react';
-import Button from '../UI/Button';
-import { useCV } from '../../hooks/useCV';
-import EditableContent from '../Admin/EditableContent';
-import SeoInnovativeBackground from '../UI/Particles';
+import Button from '@/components/UI/Button';
+import { useCV } from '@/hooks/useCV';
+import EditableContent from '@/components/Admin/EditableContent';
+import SeoInnovativeBackground from '@/components/UI/Particles';
 
 const Hero: React.FC = () => {
   const { generateCV, isGenerating } = useCV();
@@ -12,7 +12,7 @@ const Hero: React.FC = () => {
   return (
     <div className="relative min-h-screen flex items-center">
       <div className="absolute inset-0 overflow-hidden">
-	  	<SeoInnovativeBackground />
+        <SeoInnovativeBackground />
         <div className="absolute inset-0 bg-cyber-black bg-grid-pattern bg-grid-pattern opacity-10"></div>
       </div>
       
@@ -28,7 +28,7 @@ const Hero: React.FC = () => {
           />
           
           <div className="flex flex-col items-center md:flex-row justify-center gap-4 mt-8">
-            <Link to="/услуги" className="w-full md:w-auto">
+            <Link href="/услуги" className="w-full md:w-auto">
               <Button variant="primary" size="lg" icon={<ArrowRight size={20} />} fullWidth className="text-lg md:text-base">
                 Разгледай Услугите
               </Button>

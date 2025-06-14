@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Search, BarChart3, Globe, Code, Users, Database, TrendingUp, Megaphone, ArrowRight } from 'lucide-react';
-import CyberCard from '../UI/CyberCard';
-import EditableContent from '../Admin/EditableContent';
+import CyberCard from '@/components/UI/CyberCard';
+import EditableContent from '@/components/Admin/EditableContent';
 
 const services = [
   {
@@ -12,7 +12,7 @@ const services = [
     color: 'purple',
   },
   {
-    icon: <BarChart3 className="text-cyber-blue\" size={36} />,
+    icon: <BarChart3 className="text-cyber-blue" size={36} />,
     title: 'Ключови Думи',
     description: 'Анализираме ключовите думи за вашата ниша на български език с фокус върху локалното търсене и конкурентите. Така достигате точните клиенти.',
     color: 'blue',
@@ -24,7 +24,7 @@ const services = [
     color: 'teal',
   },
   {
-    icon: <Code className="text-cyber-pink\" size={36} />,
+    icon: <Code className="text-cyber-pink" size={36} />,
     title: 'Оптимизация на Съдържание',
     description: 'Създаване и оптимизация на качествено съдържание, което привлича посетители и подобрява класирането ви.',
     color: 'pink',
@@ -36,7 +36,7 @@ const services = [
     color: 'purple',
   },
   {
-    icon: <Database className="text-cyber-blue\" size={36} />,
+    icon: <Database className="text-cyber-blue" size={36} />,
     title: 'Структурирани Данни',
     description: 'Внедряване на Schema.org маркиране за подобрено визуално представяне в търсачките и по-висока видимост чрез rich snippets. Увеличава кликовете. Подчертава стойността ви още повече.',
     color: 'blue',
@@ -48,7 +48,7 @@ const services = [
     color: 'teal',
   },
   {
-    icon: <Megaphone className="text-cyber-pink\" size={36} />,
+    icon: <Megaphone className="text-cyber-pink" size={36} />,
     title: 'Линк Билдинг',
     description: 'Стратегии за изграждане на висококачествени обратни връзки от авторитетни български сайтове с фокус върху релевантност и трайност. Линковете носят доверие.',
     color: 'pink',
@@ -83,7 +83,7 @@ const Services: React.FC = () => {
                 <h3 className="text-xl font-bold mb-3">{service.title}</h3>
                 <p className="text-gray-400 flex-grow mb-4">{service.description}</p>
                 <Link 
-                  to={`/услуги/${service.title.toLowerCase().replace(/\s+/g, '-')}`}
+                  href={`/услуги/${service.title.toLowerCase().replace(/\s+/g, '-')}`}
                   className="text-cyber-blue hover:text-cyber-purple transition-colors inline-flex items-center mt-auto"
                 >
                   Научи повече
@@ -95,7 +95,7 @@ const Services: React.FC = () => {
         </div>
         
         <div className="text-center mt-12">
-          <Link to="/услуги">
+          <Link href="/услуги">
             <button className="btn-primary">
               Виж всички услуги
             </button>
