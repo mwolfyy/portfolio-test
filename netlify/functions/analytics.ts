@@ -1,3 +1,4 @@
+import path from 'path';
 process.env.GOOGLE_APPLICATION_CREDENTIALS = path.resolve('./netlify/functions/lib/credentials.json');
 import { Handler } from '@netlify/functions';
 import { BetaAnalyticsDataClient } from '@google-analytics/data';
